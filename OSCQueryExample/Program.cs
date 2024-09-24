@@ -15,7 +15,7 @@ class Program
             .WithTcpPort(tcpPort)
             .WithUdpPort(udpPort)
             .WithServiceName("Giggletech")
-            .WithDefaults()
+            .WithDefaults()  // <------------------------------- This must go after, or else it will set things to default, can possible remove later
             .Build();
 
         // Log the TCP and UDP ports
