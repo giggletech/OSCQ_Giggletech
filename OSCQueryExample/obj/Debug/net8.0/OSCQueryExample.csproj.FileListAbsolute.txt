@@ -18,3 +18,4 @@ G:\Repos\OSCQ_Giggletech\OSCQueryExample\obj\Debug\net8.0\refint\OSCQueryExample
 G:\Repos\OSCQ_Giggletech\OSCQueryExample\obj\Debug\net8.0\OSCQueryExample.pdb
 G:\Repos\OSCQ_Giggletech\OSCQueryExample\obj\Debug\net8.0\OSCQueryExample.genruntimeconfig.cache
 G:\Repos\OSCQ_Giggletech\OSCQueryExample\obj\Debug\net8.0\ref\OSCQueryExample.dll
+G:\Repos\OSCQ_Giggletech\OSCQueryExample\obj\Debug\net8.0\OSCQueryExample.sourcelink.json

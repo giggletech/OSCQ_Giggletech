@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OSCQueryExample")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de11cae58362c6562144861e95102161670e403f")]
 [assembly: System.Reflection.AssemblyProductAttribute("OSCQueryExample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OSCQueryExample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
