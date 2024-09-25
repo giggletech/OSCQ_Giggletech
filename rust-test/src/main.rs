@@ -54,26 +54,33 @@ fn start_server(port: u16) -> Result<(), Error> {
     Ok(())
 }
 
-// Function to handle the entire process flow
-fn handle_giggletech(config: &Config, process: &mut Child) {
-    match get_udp_port(config.httpPort) {
-        Ok(0) => {
-            // If UDP port is 0, start the server
-            println!("UDP port is 0, sending start command...");
-            if let Err(e) = start_server(config.httpPort) {
-                eprintln!("Failed to start server: {}", e);
+// Function to handle the main process flow and return the UDP port
+fn initialize_giggletech(config: &Config) -> i32 {
+    let mut process = run_giggletech();
+    loop {
+        match get_udp_port(config.httpPort) {
+            Ok(0) => {
+                // If UDP port is 0, start the server
+                println!("UDP port is 0, sending start command...");
+                if let Err(e) = start_server(config.httpPort) {
+                    eprintln!("Failed to start server: {}", e);
+                }
+            }
+            Ok(port_value) => {
+                // Return the UDP port if it is non-zero
+                println!("UDP port: {}", port_value);
+                return port_value;
+            }
+            Err(_) => {
+                // If the request fails, restart the process
+                eprintln!("Failed to retrieve UDP port, restarting giggletech process...");
+                let _ = process.kill(); // Kill the current process
+                process = run_giggletech(); // Restart the process
             }
         }
-        Ok(port_value) => {
-            // Print the UDP port if it's non-zero
-            println!("UDP port: {}", port_value);
-        }
-        Err(_) => {
-            // If the request fails, restart the process
-            eprintln!("Failed to retrieve UDP port, restarting giggletech process...");
-            let _ = process.kill(); // Kill the current process
-            *process = run_giggletech(); // Restart the process
-        }
+
+        // Sleep before the next iteration
+        thread::sleep(Duration::from_secs(1));
     }
 }
 
@@ -81,14 +88,11 @@ fn main() {
     // Read the configuration file once
     let config = read_config();
 
-    // Start the giggletech process initially
-    let mut process = run_giggletech();
+    // Initialize the giggletech process and get the UDP port
+    let udp_port = initialize_giggletech(&config);
 
-    // Main loop focuses only on calling the handler
-    loop {
-        handle_giggletech(&config, &mut process);
+    // Now, `udp_port` holds the value and can be used later in the program
+    println!("Final UDP Port to use: {}", udp_port);
 
-        // Sleep before the next iteration
-        thread::sleep(Duration::from_secs(10));
-    }
+    // You can continue using `udp_port` in your larger codebase as needed.
 }
