@@ -1,4 +1,14 @@
-﻿using System;
+﻿// Giggletech VRChat OSCQuery Helper
+// Usage
+//  Get Info:   http://localhost:6969/info
+//  Start       http://localhost:6969/start
+// UDP Port     http://localhost:6969/port_udp
+// TCP Port     http://localhost:6969/port_tcp
+// Shut Down    http://localhost:6969/stop
+// Change 6969 if you changed the helper Port
+
+
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
