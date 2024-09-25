@@ -155,7 +155,7 @@ static void StopService()
     // Logging function
     static void LogMessage(string message)
     {
-        string logFilePath = "oscq_service_log.txt"; // Log file path
+        string logFilePath = "service_log_oscq.txt"; // Log file path
         File.AppendAllText(logFilePath, $"{DateTime.Now}: {message}{Environment.NewLine}");
     }
 }
