@@ -25,12 +25,13 @@ class Program
 
         // Log the TCP and UDP ports
         Console.WriteLine($"Started OSCQueryService at TCP {tcpPort}, UDP {udpPort}");
+        Console.WriteLine($"OSC Messeges on UDP at: {udpPort}");
 
-        // Add an OSC endpoint that accepts string data
-        oscQuery.AddEndpoint("/my/fancy/path", "s", Attributes.AccessValues.WriteOnly, new object[] { "This is my endpoint" });
+        // Add an OSC endpoint that accepts string data with the path "/avatar"
+        oscQuery.AddEndpoint("/avatar", "s", Attributes.AccessValues.WriteOnly, new object[] { "This is my avatar endpoint" });
 
-        Console.WriteLine("Endpoint '/my/fancy/path' added. Access it at:");
-        Console.WriteLine($"http://localhost:{tcpPort}/my/fancy/path or http://localhost:{tcpPort}?explorer");
+        Console.WriteLine("Endpoint '/avatar' added. Access it at:");
+        Console.WriteLine($"http://localhost:{tcpPort}/avatar or http://localhost:{tcpPort}?explorer");
 
         // Discover and store running services
         DiscoverServices(oscQuery);
@@ -53,8 +54,8 @@ class Program
             if (key.Key == ConsoleKey.R)
             {
                 // Remove the endpoint
-                oscQuery.RemoveEndpoint("/my/fancy/path");
-                Console.WriteLine("\nEndpoint '/my/fancy/path' removed.");
+                oscQuery.RemoveEndpoint("/avatar");
+                Console.WriteLine("\nEndpoint '/avatar' removed.");
             }
             else if (key.Key == ConsoleKey.L)
             {
@@ -102,18 +103,18 @@ class Program
         {
             Console.WriteLine($"Service: {profile.name}, Address: {profile.address}:{profile.port}");
 
-            // Check if the service has a specific endpoint (e.g., "/cool/endpoint")
+            // Check if the service has a specific endpoint (e.g., "/avatar")
             var tree = await Extensions.GetOSCTree(profile.address, profile.port);
-            var node = tree.GetNodeWithPath("/avatar");
+            //var node = tree.GetNodeWithPath("/avatar");
 
-            if (node != null)
-            {
-                Console.WriteLine($"Found endpoint '/cool/endpoint' on service {profile.name}");
-            }
-            else
-            {
-                Console.WriteLine($"No endpoint '/cool/endpoint' found on service {profile.name}");
-            }
+            // if (node != null)
+            // {
+            //     Console.WriteLine($"Found endpoint '/avatar' on service {profile.name}");
+            // }
+            // else
+            // {
+            //     Console.WriteLine($"No endpoint '/avatar' found on service {profile.name}");
+            // }
         }
     }
 }
