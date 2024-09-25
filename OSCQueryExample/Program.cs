@@ -105,16 +105,7 @@ class Program
 
             // Check if the service has a specific endpoint (e.g., "/avatar")
             var tree = await Extensions.GetOSCTree(profile.address, profile.port);
-            //var node = tree.GetNodeWithPath("/avatar");
 
-            // if (node != null)
-            // {
-            //     Console.WriteLine($"Found endpoint '/avatar' on service {profile.name}");
-            // }
-            // else
-            // {
-            //     Console.WriteLine($"No endpoint '/avatar' found on service {profile.name}");
-            // }
         }
     }
 }
