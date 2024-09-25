@@ -8,6 +8,24 @@
 // Change 6969 if you changed the helper Port
 
 
+
+// THIS NEEDS TO BE RUNNING FOR GIGGLETECH TO WORK -< TOMOTOWOWOWOWOWOWOW
+
+// TOMOROW: why isnt this running anywhere? Where do i install it and how do i call it / maike sure its alway active
+// Runs in C directory -> Something to do with admin writes
+// How can i install it so it has acess to do things ? 
+
+
+// Move Writable Files: Store files that need to be written or modified in a writable location like:
+
+// %APPDATA%: C:\Users\Username\AppData\Roaming\giggletech
+// %LOCALAPPDATA%: C:\Users\Username\AppData\Local\giggletech
+
+// If your app requires admin-level privileges, make sure it's configured to request admin rights at runtime (for actions like modifying system files or writing logs to Program Files).
+
+// Add a Manifest File: Include a manifest with your application to always run with elevated privileges. For example, the giggletech_oscq.exe file can have a manifest that specifies it should run as an administrator:
+
+// ------------- IT PROBLY IS CRAHSING CUZE IT CARNT WRITE OR ADD A FILE IN PRGRAM FILES----------------------
 using System;
 using System.Collections.Generic;
 using System.Net;
