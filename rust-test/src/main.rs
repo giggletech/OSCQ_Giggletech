@@ -5,11 +5,25 @@ use reqwest::blocking::{get, Client};
 use reqwest::Error;
 
 // Function to start the giggletech process
+
+use std::path::PathBuf;
+use dirs::data_local_dir; // Import the dirs crate for AppData directory resolution
+
 fn run_giggletech() -> Child {
-    Command::new(r"C:\Users\jason\AppData\Local\Giggletech\giggletech_oscq.exe")
+    // Get the path to the `AppData\Local` folder
+    let app_data_local_dir = data_local_dir().expect("Failed to get AppData\\Local directory");
+
+    // Construct the full path to the Giggletech executable
+    let mut executable_path = PathBuf::from(app_data_local_dir);
+    executable_path.push("Giggletech");
+    executable_path.push("giggletech_oscq.exe");
+
+    // Start the process using the constructed path
+    Command::new(executable_path)
         .spawn()
         .expect("Failed to start process")
 }
+
 
 // Function to retrieve the UDP port value from the server
 fn get_udp_port() -> Result<i32, Error> {

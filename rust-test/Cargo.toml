@@ -9,5 +9,6 @@ edition = "2021"
 [dependencies]
 reqwest = { version = "0.11", features = ["json", "blocking"] }
 tokio = { version = "1", features = ["full"] }
-execute = "0.2.13"  
+execute = "0.2.13"
+dirs = "4.0"  
 
