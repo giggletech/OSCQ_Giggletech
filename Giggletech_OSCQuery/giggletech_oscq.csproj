@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="VRChat.OSCQuery" Version="0.0.7" />
+    <PackageReference Include="YamlDotNet" Version="16.1.2" />
   </ItemGroup>
 
 </Project>
