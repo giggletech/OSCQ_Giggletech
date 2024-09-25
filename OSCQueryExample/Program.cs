@@ -108,6 +108,8 @@ static void StartService()
     if (oscQuery != null)
     {
         StopService();
+        LogMessage("A service instance was already running. The previous service has been stopped and a new instance will be started.");
+
     }
 
     // Get available TCP and UDP ports
@@ -153,7 +155,7 @@ static void StopService()
     // Logging function
     static void LogMessage(string message)
     {
-        string logFilePath = "service_log.txt"; // Log file path
+        string logFilePath = "oscq_service_log.txt"; // Log file path
         File.AppendAllText(logFilePath, $"{DateTime.Now}: {message}{Environment.NewLine}");
     }
 }

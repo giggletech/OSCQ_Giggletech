@@ -113,3 +113,56 @@
 25/09/2024 1:29:02 PM: Received command: stop
 25/09/2024 1:29:02 PM: OSCQueryService stopped.
 25/09/2024 1:29:02 PM: Shutting down application...
+25/09/2024 1:31:14 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 1:31:24 PM: Received command: port
+25/09/2024 1:31:24 PM: Received command: favicon.ico
+25/09/2024 1:31:27 PM: Received command: start
+25/09/2024 1:31:27 PM: OSCQuery service started at TCP 55662, UDP 64386
+25/09/2024 1:31:27 PM: OSC Messages on UDP at: 64386
+25/09/2024 1:31:27 PM: Received command: favicon.ico
+25/09/2024 1:31:30 PM: Received command: port
+25/09/2024 1:31:30 PM: Received command: favicon.ico
+25/09/2024 1:31:37 PM: Received command: start
+25/09/2024 1:31:37 PM: OSCQueryService stopped.
+25/09/2024 1:31:37 PM: Services already running, shut down previous serive and restart
+25/09/2024 1:31:37 PM: OSCQuery service started at TCP 55668, UDP 55012
+25/09/2024 1:31:37 PM: OSC Messages on UDP at: 55012
+25/09/2024 1:31:37 PM: Received command: favicon.ico
+25/09/2024 1:31:42 PM: Received command: port
+25/09/2024 1:31:42 PM: Received command: favicon.ico
+25/09/2024 1:31:44 PM: Received command: start
+25/09/2024 1:31:44 PM: OSCQueryService stopped.
+25/09/2024 1:31:44 PM: Services already running, shut down previous serive and restart
+25/09/2024 1:31:44 PM: OSCQuery service started at TCP 55671, UDP 59450
+25/09/2024 1:31:44 PM: OSC Messages on UDP at: 59450
+25/09/2024 1:31:44 PM: Received command: favicon.ico
+25/09/2024 1:31:47 PM: Received command: port
+25/09/2024 1:31:48 PM: Received command: favicon.ico
+25/09/2024 1:32:45 PM: Received command: stop
+25/09/2024 1:32:45 PM: OSCQueryService stopped.
+25/09/2024 1:32:45 PM: Shutting down application...
+25/09/2024 1:33:00 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 1:33:09 PM: Received command: stop
+25/09/2024 1:33:09 PM: Shutting down application...
+25/09/2024 1:33:16 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 1:33:16 PM: Received command: port
+25/09/2024 1:33:16 PM: Received command: favicon.ico
+25/09/2024 1:33:24 PM: Received command: port
+25/09/2024 1:33:24 PM: Received command: favicon.ico
+25/09/2024 1:33:26 PM: Received command: start
+25/09/2024 1:33:26 PM: OSCQuery service started at TCP 55722, UDP 49305
+25/09/2024 1:33:26 PM: OSC Messages on UDP at: 49305
+25/09/2024 1:33:26 PM: Received command: favicon.ico
+25/09/2024 1:33:28 PM: Received command: port
+25/09/2024 1:33:29 PM: Received command: favicon.ico
+25/09/2024 1:33:30 PM: Received command: start
+25/09/2024 1:33:30 PM: OSCQueryService stopped.
+25/09/2024 1:33:30 PM: A service instance was already running. The previous service has been stopped and a new instance will be started.
+25/09/2024 1:33:30 PM: OSCQuery service started at TCP 55724, UDP 51515
+25/09/2024 1:33:30 PM: OSC Messages on UDP at: 51515
+25/09/2024 1:33:30 PM: Received command: favicon.ico
+25/09/2024 1:33:32 PM: Received command: port
+25/09/2024 1:33:32 PM: Received command: favicon.ico
+25/09/2024 1:33:34 PM: Received command: stop
+25/09/2024 1:33:34 PM: OSCQueryService stopped.
+25/09/2024 1:33:34 PM: Shutting down application...
