@@ -17,15 +17,16 @@ class Program
     private static int udpPort;
     private static int tcpPort;
 
-    // HTTP listener port (from YAML config)
+    // HTTP listener port and service name (from YAML config)
     private static int httpPort;
+    private static string serviceName;
 
     // Token for stopping the application from the HTTP request
     private static CancellationTokenSource cts = new CancellationTokenSource();
 
     static async Task Main(string[] args)
     {
-        // Load the initial configuration from the YAML file (to get the HTTP listener port)
+        // Load the initial configuration from the YAML file (to get the HTTP listener port and service name)
         LoadConfigFromYaml();
 
         // Set up the HTTP listener for remote control using the port from the YAML file
@@ -72,7 +73,7 @@ class Program
             if (command == "start")
             {
                 StartService();
-                byte[] buffer = Encoding.UTF8.GetBytes($"Service started on UDP {udpPort}");
+                byte[] buffer = Encoding.UTF8.GetBytes($"Service started...");
                 context.Response.OutputStream.Write(buffer, 0, buffer.Length);
             }
             else if (command == "stop")
@@ -93,7 +94,8 @@ class Program
             else if (command == "info")
             {
                 // Return the current TCP, UDP, and HTTP listener port numbers
-                byte[] buffer = Encoding.UTF8.GetBytes($"TCP Port: {tcpPort}, UDP Port: {udpPort}, HTTP Listener Port: {httpPort}");
+                byte[] buffer = Encoding.UTF8.GetBytes($"Giggletech OSCQuery Helper\nTCP Port: {tcpPort}\nUDP Port: {udpPort}\nHTTP Listener Port: {httpPort}\nService Name: {serviceName}");
+
                 context.Response.OutputStream.Write(buffer, 0, buffer.Length);
             }
             else if (command == "port_udp")
@@ -139,11 +141,11 @@ class Program
         oscQuery = new OSCQueryServiceBuilder()
             .WithTcpPort(tcpPort)
             .WithUdpPort(udpPort)
-            .WithServiceName("Giggletech")
+            .WithServiceName(serviceName) // Use the service name from the YAML file
             .WithDefaults()
             .Build();
-
-        LogMessage($"OSCQuery service started at TCP {tcpPort}, UDP {udpPort}");
+        
+        LogMessage($"OSCQuery service started at TCP {tcpPort}, UDP {udpPort}, Service Name: {serviceName}");
         LogMessage($"OSC Messages on UDP at: {udpPort}");
 
         // Add an OSC endpoint
@@ -178,7 +180,7 @@ class Program
         File.AppendAllText(logFilePath, $"{DateTime.Now}: {message}{Environment.NewLine}");
     }
 
-    // Load the HTTP port configuration from YAML file
+    // Load the HTTP port and service name configuration from YAML file
     static void LoadConfigFromYaml()
     {
         try
@@ -187,17 +189,19 @@ class Program
                 .WithNamingConvention(UnderscoredNamingConvention.Instance)
                 .Build();
 
-            var yamlContent = File.ReadAllText("config.yml");
-            var config = deserializer.Deserialize<Dictionary<string, int>>(yamlContent);
+            var yamlContent = File.ReadAllText("config_oscq.yml");
+            var config = deserializer.Deserialize<Dictionary<string, object>>(yamlContent);
 
-            httpPort = config["httpPort"];
+            httpPort = Convert.ToInt32(config["httpPort"]);
+            serviceName = config["serviceName"].ToString();
 
-            LogMessage($"Loaded configuration: HTTP Listener Port {httpPort}");
+            LogMessage($"Loaded configuration: HTTP Listener Port {httpPort}, Service Name {serviceName}");
         }
         catch (Exception ex)
         {
             LogMessage($"Error loading configuration: {ex.Message}");
-            httpPort = 8080; // Default HTTP listener port
+            httpPort = 8080;  // Default HTTP listener port
+            serviceName = "Giggletech";  // Default service name
         }
     }
 }
