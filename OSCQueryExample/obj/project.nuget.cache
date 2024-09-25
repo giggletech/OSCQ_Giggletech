@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lfoNQYMAoV4=",
+  "dgSpecHash": "NfxWVVF16ps=",
   "success": true,
-  "projectFilePath": "G:\\Repos\\OSCQ_Giggletech\\OSCQueryExample\\OSCQueryExample.csproj",
+  "projectFilePath": "G:\\Repos\\OSCQ_Giggletech\\oscqueryexample\\OSCQueryExample.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jason\\.nuget\\packages\\meamod.dns\\1.0.70\\meamod.dns.1.0.70.nupkg.sha512",
     "C:\\Users\\jason\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.2\\microsoft.extensions.logging.abstractions.6.0.2.nupkg.sha512",

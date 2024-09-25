@@ -1,4 +1,9 @@
-﻿using System;
+﻿// http://localhost:8080/start
+// http://localhost:8080/stop
+// http://localhost:8080/port
+
+
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;

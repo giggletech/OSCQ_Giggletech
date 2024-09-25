@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Repos\\OSCQ_Giggletech\\OSCQueryExample\\OSCQueryExample.csproj": {}
+    "G:\\Repos\\OSCQ_Giggletech\\oscqueryexample\\OSCQueryExample.csproj": {}
   },
   "projects": {
-    "G:\\Repos\\OSCQ_Giggletech\\OSCQueryExample\\OSCQueryExample.csproj": {
+    "G:\\Repos\\OSCQ_Giggletech\\oscqueryexample\\OSCQueryExample.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Repos\\OSCQ_Giggletech\\OSCQueryExample\\OSCQueryExample.csproj",
+        "projectUniqueName": "G:\\Repos\\OSCQ_Giggletech\\oscqueryexample\\OSCQueryExample.csproj",
         "projectName": "OSCQueryExample",
-        "projectPath": "G:\\Repos\\OSCQ_Giggletech\\OSCQueryExample\\OSCQueryExample.csproj",
+        "projectPath": "G:\\Repos\\OSCQ_Giggletech\\oscqueryexample\\OSCQueryExample.csproj",
         "packagesPath": "C:\\Users\\jason\\.nuget\\packages\\",
-        "outputPath": "G:\\Repos\\OSCQ_Giggletech\\OSCQueryExample\\obj\\",
+        "outputPath": "G:\\Repos\\OSCQ_Giggletech\\oscqueryexample\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jason\\AppData\\Roaming\\NuGet\\NuGet.Config"
