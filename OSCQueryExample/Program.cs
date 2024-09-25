@@ -37,7 +37,7 @@ class Program
         // Start handling remote commands asynchronously
         Task listenerTask = HandleRemoteCommands(listener, cts.Token);
 
-        // Use cancellation token to stop the program when the "/stop" command is issued
+        // Await the listener task to keep the application alive
         await listenerTask;
     }
 
@@ -69,11 +69,17 @@ class Program
             else if (command == "stop")
             {
                 StopService();
-                byte[] buffer = Encoding.UTF8.GetBytes("Service stopped");
+                byte[] buffer = Encoding.UTF8.GetBytes("Service stopped. Application shutting down...");
                 context.Response.OutputStream.Write(buffer, 0, buffer.Length);
-
+                
                 // Signal the application to stop by canceling the token
                 cts.Cancel();
+                
+                // Ensure all responses are flushed before closing
+                context.Response.OutputStream.Close();
+
+                // Shutdown the application
+                ShutdownApplication();
             }
             else if (command == "port")
             {
@@ -95,35 +101,53 @@ class Program
     }
 
     // Function to start the OSCQuery service
-    static void StartService()
+    // Function to start the OSCQuery service
+static void StartService()
+{
+    // If an OSCQuery service is already running, stop and dispose of it
+    if (oscQuery != null)
     {
-        // Get available TCP and UDP ports
-        int tcpPort = Extensions.GetAvailableTcpPort();
-        udpPort = Extensions.GetAvailableUdpPort();
-
-        // Set up the OSCQuery service
-        oscQuery = new OSCQueryServiceBuilder()
-            .WithTcpPort(tcpPort)
-            .WithUdpPort(udpPort)
-            .WithServiceName("Giggletech")
-            .WithDefaults()
-            .Build();
-
-        LogMessage($"OSCQuery service started at TCP {tcpPort}, UDP {udpPort}");
-        LogMessage($"OSC Messages on UDP at: {udpPort}");
-
-        // Add an OSC endpoint
-        oscQuery.AddEndpoint("/avatar", "s", Attributes.AccessValues.WriteOnly, new object[] { "This is my avatar endpoint" });
+        StopService();
     }
 
-    // Function to stop the OSCQuery service
-    static void StopService()
+    // Get available TCP and UDP ports
+    int tcpPort = Extensions.GetAvailableTcpPort();
+    udpPort = Extensions.GetAvailableUdpPort();
+
+    // Set up the OSCQuery service
+    oscQuery = new OSCQueryServiceBuilder()
+        .WithTcpPort(tcpPort)
+        .WithUdpPort(udpPort)
+        .WithServiceName("Giggletech")
+        .WithDefaults()
+        .Build();
+
+    LogMessage($"OSCQuery service started at TCP {tcpPort}, UDP {udpPort}");
+    LogMessage($"OSC Messages on UDP at: {udpPort}");
+
+    // Add an OSC endpoint
+    oscQuery.AddEndpoint("/avatar", "s", Attributes.AccessValues.WriteOnly, new object[] { "This is my avatar endpoint" });
+}
+
+// Function to stop the OSCQuery service
+static void StopService()
+{
+    // Dispose of the OSCQuery service if it exists
+    if (oscQuery != null)
     {
-        if (oscQuery != null)
-        {
-            oscQuery.Dispose();
-            LogMessage("OSCQueryService stopped.");
-        }
+        oscQuery.Dispose();
+        oscQuery = null;  // Set to null to indicate the service is stopped
+        LogMessage("OSCQueryService stopped.");
+    }
+}
+
+    // Function to shut down the application gracefully
+    static void ShutdownApplication()
+    {
+        LogMessage("Shutting down application...");
+        
+        // Exit the application with code 0 (success)
+        Environment.Exit(0);
     }
 
     // Logging function
