@@ -1,3 +1,27 @@
+/*
+    Giggletech OSCQuery Rust Module
+    
+    About this Module:
+
+    This module handles the initialization and management of the `giggletech_oscq.exe` process.
+    It reads configuration from a YAML file located in the `AppData\Local\Giggletech` directory,
+    starts the process, and continuously checks the `httpPort` for the UDP port via an HTTP request
+    to the `/port_udp` endpoint.
+
+    If the UDP port is `0`, the module sends a start command to the `/start` endpoint.
+    If a valid non-zero UDP port is received, it is returned for further use in the main program.
+    The process is automatically restarted if the UDP port cannot be retrieved, ensuring that
+    the process stays running until a valid UDP port is received.
+
+    Key Functions:
+    - `initialize_and_get_udp_port()` (async): 
+        - Reads the config, starts the process, and continuously checks for a valid UDP port.
+        - Returns the UDP port once it is successfully retrieved.
+
+
+*/
+
+
 use std::fs;
 use std::path::PathBuf;
 use std::process::{Command, Child};
