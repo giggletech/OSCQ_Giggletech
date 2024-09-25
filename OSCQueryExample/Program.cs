@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using VRC.OSCQuery; // Import the OSCQuery library
-using System.Timers;
+using System.Text;
 
 class Program
 {
@@ -48,13 +48,24 @@ class Program
             if (command == "start")
             {
                 StartService();
-                byte[] buffer = System.Text.Encoding.UTF8.GetBytes($"Service started on UDP {udpPort}");
+                byte[] buffer = Encoding.UTF8.GetBytes($"Service started on UDP {udpPort}");
                 context.Response.OutputStream.Write(buffer, 0, buffer.Length);
             }
             else if (command == "stop")
             {
                 StopService();
-                byte[] buffer = System.Text.Encoding.UTF8.GetBytes("Service stopped");
+                byte[] buffer = Encoding.UTF8.GetBytes("Service stopped");
+                context.Response.OutputStream.Write(buffer, 0, buffer.Length);
+            }
+            else if (command == "port")
+            {
+                // Return the current UDP port number
+                byte[] buffer = Encoding.UTF8.GetBytes($"{udpPort}");
+                context.Response.OutputStream.Write(buffer, 0, buffer.Length);
+            }
+            else
+            {
+                byte[] buffer = Encoding.UTF8.GetBytes("Unknown command");
                 context.Response.OutputStream.Write(buffer, 0, buffer.Length);
             }
             context.Response.OutputStream.Close();
