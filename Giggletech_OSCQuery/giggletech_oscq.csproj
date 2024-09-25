@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>giggletech_oscq</AssemblyName>
+    <RootNamespace>giggletech_oscq</RootNamespace>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="VRChat.OSCQuery" Version="0.0.7" />
+  </ItemGroup>
+
+</Project>
