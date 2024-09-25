@@ -7,38 +7,40 @@ use dirs::data_local_dir;
 use serde::Deserialize;
 use reqwest::blocking::{get, Client};
 use reqwest::Error;
-use serde_yaml; // Import `serde_yaml` to parse YAML configuration
+use serde_yaml;
 
-// Define the structure of your YAML configuration
+// Struct to deserialize the YAML config
 #[derive(Debug, Deserialize)]
 struct Config {
-    httpPort: u16, // Match the field name in the YAML file
+    httpPort: u16,
 }
 
-// Function to read the config_oscq.yml file and extract the port number
-fn read_config(config_path: &PathBuf) -> Result<Config, serde_yaml::Error> {
+// Function to read and parse the YAML config file
+fn read_config() -> Config {
+    let mut config_path = data_local_dir().expect("Failed to get AppData\\Local directory");
+    config_path.push("Giggletech");
+    config_path.push("config_oscq.yml");
+
     let config_str = fs::read_to_string(config_path).expect("Failed to read config_oscq.yml");
-    serde_yaml::from_str(&config_str)
+    serde_yaml::from_str(&config_str).expect("Failed to parse config_oscq.yml")
 }
 
 // Function to start the giggletech process
 fn run_giggletech() -> Child {
-    let app_data_local_dir = data_local_dir().expect("Failed to get AppData\\Local directory");
-
-    let mut executable_path = PathBuf::from(&app_data_local_dir);
+    let mut executable_path = data_local_dir().expect("Failed to get AppData\\Local directory");
     executable_path.push("Giggletech");
     executable_path.push("giggletech_oscq.exe");
 
     Command::new(executable_path)
         .spawn()
-        .expect("Failed to start process")
+        .expect("Failed to start giggletech process")
 }
 
-// Function to retrieve the UDP port value from the server
+// Function to get the UDP port from the server
 fn get_udp_port(port: u16) -> Result<i32, Error> {
     let url = format!("http://localhost:{}/port_udp", port);
     let response = get(&url)?;
-    let port_value: i32 = response.text()?.trim().parse().unwrap_or(0); // Default to 0 if parsing fails
+    let port_value: i32 = response.text()?.trim().parse().unwrap_or(0); // Return 0 if parsing fails
     Ok(port_value)
 }
 
@@ -48,45 +50,45 @@ fn start_server(port: u16) -> Result<(), Error> {
     let url = format!("http://localhost:{}/start", port);
     client.get(&url)
         .send()?
-        .error_for_status()?; // Ensure we only succeed on a 2xx status
+        .error_for_status()?;
     Ok(())
 }
 
-fn main() {
-    // Get the path to the AppData\Local\Giggletech folder
-    let mut config_path = data_local_dir().expect("Failed to get AppData\\Local directory");
-    config_path.push("Giggletech");
-    config_path.push("config_oscq.yml");
-
-    // Read the configuration file and extract the port number
-    let config = read_config(&config_path).expect("Failed to parse config_oscq.yml");
-
-    // Start the process initially
-    let mut process = run_giggletech();
-
-    // Main loop to monitor the process
-    loop {
-        match get_udp_port(config.httpPort) {
-            Ok(0) => {
-                // If port is 0, send the start command
-                println!("UDP port is 0, sending start command...");
-                if let Err(e) = start_server(config.httpPort) {
-                    eprintln!("Failed to start server: {}", e);
-                }
-            }
-            Ok(port_value) => {
-                // If port is non-zero, print it
-                println!("UDP port: {}", port_value);
-            }
-            Err(_) => {
-                // If we fail to retrieve the port, restart the process
-                eprintln!("Failed to retrieve UDP port, restarting giggletech_oscq.exe...");
-                let _ = process.kill(); // Kill the current process if running
-                process = run_giggletech(); // Restart the process
+// Function to handle the entire process flow
+fn handle_giggletech(config: &Config, process: &mut Child) {
+    match get_udp_port(config.httpPort) {
+        Ok(0) => {
+            // If UDP port is 0, start the server
+            println!("UDP port is 0, sending start command...");
+            if let Err(e) = start_server(config.httpPort) {
+                eprintln!("Failed to start server: {}", e);
             }
         }
+        Ok(port_value) => {
+            // Print the UDP port if it's non-zero
+            println!("UDP port: {}", port_value);
+        }
+        Err(_) => {
+            // If the request fails, restart the process
+            eprintln!("Failed to retrieve UDP port, restarting giggletech process...");
+            let _ = process.kill(); // Kill the current process
+            *process = run_giggletech(); // Restart the process
+        }
+    }
+}
 
-        // Sleep for a bit before checking again
-        thread::sleep(Duration::from_secs(2)); // Adjust as needed
+fn main() {
+    // Read the configuration file once
+    let config = read_config();
+
+    // Start the giggletech process initially
+    let mut process = run_giggletech();
+
+    // Main loop focuses only on calling the handler
+    loop {
+        handle_giggletech(&config, &mut process);
+
+        // Sleep before the next iteration
+        thread::sleep(Duration::from_secs(10));
     }
 }
