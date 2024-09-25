@@ -1,0 +1,30 @@
+25/09/2024 1:09:59 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 1:09:59 PM: Press 'Q' to quit at any time...
+25/09/2024 1:11:14 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 1:11:14 PM: Press 'Q' to quit at any time...
+25/09/2024 1:12:09 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 1:12:09 PM: Press 'Q' to quit at any time...
+25/09/2024 1:12:54 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 1:12:54 PM: Press 'Q' to quit at any time...
+25/09/2024 1:12:59 PM: Received command: 
+25/09/2024 1:12:59 PM: Received command: favicon.ico
+25/09/2024 1:13:02 PM: Received command: port
+25/09/2024 1:13:03 PM: Received command: favicon.ico
+25/09/2024 1:13:04 PM: Received command: start
+25/09/2024 1:13:04 PM: OSCQuery service started at TCP 55290, UDP 64230
+25/09/2024 1:13:04 PM: OSC Messages on UDP at: 64230
+25/09/2024 1:13:05 PM: Received command: favicon.ico
+25/09/2024 1:13:07 PM: Received command: port
+25/09/2024 1:13:07 PM: Received command: favicon.ico
+25/09/2024 1:14:58 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 1:14:58 PM: Press 'Q' to quit at any time...
+25/09/2024 1:15:04 PM: Received command: port
+25/09/2024 1:15:04 PM: Received command: favicon.ico
+25/09/2024 1:15:07 PM: Received command: port
+25/09/2024 1:15:07 PM: Received command: favicon.ico
+25/09/2024 1:15:08 PM: Received command: start
+25/09/2024 1:15:08 PM: OSCQuery service started at TCP 55314, UDP 62670
+25/09/2024 1:15:08 PM: OSC Messages on UDP at: 62670
+25/09/2024 1:15:09 PM: Received command: favicon.ico
+25/09/2024 1:15:10 PM: Received command: port
+25/09/2024 1:15:10 PM: Received command: favicon.ico

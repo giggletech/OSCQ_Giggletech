@@ -1,14 +1,11 @@
-﻿// http://localhost:8080/start
-// http://localhost:8080/stop
-// http://localhost:8080/port
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using VRC.OSCQuery; // Import the OSCQuery library
+using VRC.OSCQuery;
 using System.Text;
+using System.IO;
+using System.Runtime.InteropServices;
 
 class Program
 {
@@ -17,19 +14,42 @@ class Program
     private static OSCQueryService oscQuery;
     private static int udpPort;
 
+    // Import the necessary methods for hiding the console window
+    [DllImport("kernel32.dll")]
+    static extern IntPtr GetConsoleWindow();
+
+    [DllImport("user32.dll")]
+    static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+    const int SW_HIDE = 0;
+
     static async Task Main(string[] args)
     {
+        // Hide the console window
+        var handle = GetConsoleWindow();
+        ShowWindow(handle, SW_HIDE);
+
         // Set up the HTTP listener for remote control
         HttpListener listener = new HttpListener();
         listener.Prefixes.Add("http://localhost:8080/"); // Local HTTP server to handle requests
-        listener.Start();
-        Console.WriteLine("HTTP server listening on http://localhost:8080/");
 
-        // Start handling remote commands
-        Task.Run(() => HandleRemoteCommands(listener));
+        try
+        {
+            listener.Start();
+            LogMessage("HTTP server listening on http://localhost:8080/");
+        }
+        catch (HttpListenerException ex)
+        {
+            LogMessage($"Failed to start HTTP listener: {ex.Message}");
+            return;
+        }
 
-        Console.WriteLine("Press 'Q' to quit at any time...");
+        // Start handling remote commands asynchronously
+        Task listenerTask = HandleRemoteCommands(listener);
 
+        LogMessage("Press 'Q' to quit at any time...");
+
+        // Keep the application alive until 'Q' is pressed
         while (true)
         {
             var key = Console.ReadKey();
@@ -40,15 +60,29 @@ class Program
                 break;
             }
         }
+
+        // Await the listener task to make sure it's properly handled
+        await listenerTask;
     }
 
     // Function to handle HTTP requests for remote control
     static async Task HandleRemoteCommands(HttpListener listener)
     {
-        while (true)
+        while (listener.IsListening)
         {
-            HttpListenerContext context = await listener.GetContextAsync();
+            HttpListenerContext context;
+            try
+            {
+                context = await listener.GetContextAsync();
+            }
+            catch (HttpListenerException ex)
+            {
+                LogMessage($"Listener stopped or failed: {ex.Message}");
+                break;
+            }
+
             string command = context.Request.RawUrl.Trim('/').ToLower();
+            LogMessage($"Received command: {command}");
 
             if (command == "start")
             {
@@ -73,6 +107,7 @@ class Program
                 byte[] buffer = Encoding.UTF8.GetBytes("Unknown command");
                 context.Response.OutputStream.Write(buffer, 0, buffer.Length);
             }
+
             context.Response.OutputStream.Close();
         }
     }
@@ -92,8 +127,8 @@ class Program
             .WithDefaults()
             .Build();
 
-        Console.WriteLine($"OSCQuery service started at TCP {tcpPort}, UDP {udpPort}");
-        Console.WriteLine($"OSC Messages on UDP at: {udpPort}");
+        LogMessage($"OSCQuery service started at TCP {tcpPort}, UDP {udpPort}");
+        LogMessage($"OSC Messages on UDP at: {udpPort}");
 
         // Add an OSC endpoint
         oscQuery.AddEndpoint("/avatar", "s", Attributes.AccessValues.WriteOnly, new object[] { "This is my avatar endpoint" });
@@ -105,7 +140,14 @@ class Program
         if (oscQuery != null)
         {
             oscQuery.Dispose();
-            Console.WriteLine("OSCQueryService stopped.");
+            LogMessage("OSCQueryService stopped.");
         }
+    }
+
+    // Logging function
+    static void LogMessage(string message)
+    {
+        string logFilePath = "service_log.txt"; // Log file path
+        File.AppendAllText(logFilePath, $"{DateTime.Now}: {message}{Environment.NewLine}");
     }
 }

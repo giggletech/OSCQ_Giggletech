@@ -6,20 +6,25 @@ use tokio::time::{sleep, Duration};
 async fn main() -> Result<(), Box<dyn Error>> {
     let client = Client::new();
 
-    // Step 1: Try to start the OSCQuery service
-    let start_url = "http://localhost:8080/start";
-    match client.get(start_url).send().await {
-        Ok(response) => {
-            if response.status().is_success() {
-                println!("Service started successfully at {}", start_url);
-            } else {
-                eprintln!("Failed to start the service at {}: {}", start_url, response.status());
+    // Function to start the OSCQuery service
+    async fn start_service(client: &Client) {
+        let start_url = "http://localhost:8080/start";
+        match client.get(start_url).send().await {
+            Ok(response) => {
+                if response.status().is_success() {
+                    println!("Service started successfully at {}", start_url);
+                } else {
+                    eprintln!("Failed to start the service at {}: {}", start_url, response.status());
+                }
+            }
+            Err(e) => {
+                eprintln!("Error connecting to {}: {}", start_url, e);
             }
         }
-        Err(e) => {
-            eprintln!("Error connecting to {}: {}", start_url, e);
-        }
     }
+
+    // Initially try to start the service
+    start_service(&client).await;
 
     // Step 2: Periodically check if the server is running and retrieve the port
     let check_url = "http://localhost:8080";
@@ -44,7 +49,14 @@ async fn main() -> Result<(), Box<dyn Error>> {
             Ok(response) => {
                 if response.status().is_success() {
                     let port_text = response.text().await?;
-                    println!("OSC output to port \"{}\"", port_text.trim());
+                    let port: u16 = port_text.trim().parse().unwrap_or(0);  // Default to 0 if parsing fails
+                    println!("OSC output to port \"{}\"", port);
+
+                    // Step 4: If port is 0, start the service again
+                    if port == 0 {
+                        println!("Port is 0, attempting to start the service...");
+                        start_service(&client).await;
+                    }
                 } else {
                     println!("Failed to retrieve port information: {}", response.status());
                 }
