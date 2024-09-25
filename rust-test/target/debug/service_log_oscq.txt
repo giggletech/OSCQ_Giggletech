@@ -1,0 +1,2 @@
+25/09/2024 5:58:54 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\target\debug\config_oscq.yml'.
+25/09/2024 5:58:54 PM: HTTP server listening on http://localhost:8080/

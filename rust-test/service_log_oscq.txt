@@ -1,0 +1,26 @@
+25/09/2024 5:48:05 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 5:48:05 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 5:48:53 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 5:48:53 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:8080/' because it conflicts with an existing registration on the machine.
+25/09/2024 5:49:08 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 5:49:08 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:8080/' because it conflicts with an existing registration on the machine.
+25/09/2024 5:49:42 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 5:49:42 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:8080/' because it conflicts with an existing registration on the machine.
+25/09/2024 5:50:25 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 5:50:25 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:8080/' because it conflicts with an existing registration on the machine.
+25/09/2024 5:52:28 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 5:52:29 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 5:54:01 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 5:54:01 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:8080/' because it conflicts with an existing registration on the machine.
+25/09/2024 5:54:43 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 5:54:43 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:8080/' because it conflicts with an existing registration on the machine.
+25/09/2024 5:56:33 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 5:56:33 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 5:58:08 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 5:58:08 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:8080/' because it conflicts with an existing registration on the machine.
+25/09/2024 6:02:48 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 6:02:48 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 6:06:17 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 6:06:17 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:8080/' because it conflicts with an existing registration on the machine.
+25/09/2024 6:08:06 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
+25/09/2024 6:08:06 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:8080/' because it conflicts with an existing registration on the machine.

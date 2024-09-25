@@ -1,4 +1,4 @@
-﻿// Giggletech VRChat OSCQuery Helper
+﻿// Giggletech VRChat OSCQuery
 // Usage
 //  Get Info:   http://localhost:6969/info
 //  Start       http://localhost:6969/start
@@ -190,9 +190,13 @@ class Program
         File.AppendAllText(logFilePath, $"{DateTime.Now}: {message}{Environment.NewLine}");
     }
 
-    // Load the HTTP port and service name configuration from YAML file
+    // Load the HTTP port and service name configuration from YAML file with fallback values
     static void LoadConfigFromYaml()
     {
+        // Set default values for the configuration
+        httpPort = 6969;  // Default HTTP listener port
+        serviceName = "Giggletech";  // Default service name
+
         try
         {
             var deserializer = new DeserializerBuilder()
@@ -202,16 +206,27 @@ class Program
             var yamlContent = File.ReadAllText("config_oscq.yml");
             var config = deserializer.Deserialize<Dictionary<string, object>>(yamlContent);
 
-            httpPort = Convert.ToInt32(config["httpPort"]);
-            serviceName = config["serviceName"].ToString();
+            // Attempt to load the HTTP port and service name from YAML, if present
+            if (config.ContainsKey("httpPort"))
+            {
+                httpPort = Convert.ToInt32(config["httpPort"]);
+            }
+
+            if (config.ContainsKey("serviceName"))
+            {
+                serviceName = config["serviceName"].ToString();
+            }
 
             LogMessage($"Loaded configuration: HTTP Listener Port {httpPort}, Service Name {serviceName}");
         }
+        catch (FileNotFoundException)
+        {
+            LogMessage($"YAML configuration file not found. Using default values: HTTP Port {httpPort}, Service Name {serviceName}");
+        }
         catch (Exception ex)
         {
-            LogMessage($"Error loading configuration: {ex.Message}");
-            httpPort = 8080;  // Default HTTP listener port
-            serviceName = "Giggletech";  // Default service name
+            LogMessage($"Error loading configuration: {ex.Message}. Using default values: HTTP Port {httpPort}, Service Name {serviceName}");
         }
     }
+
 }
