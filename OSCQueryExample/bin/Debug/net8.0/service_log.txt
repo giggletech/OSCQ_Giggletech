@@ -28,3 +28,15 @@
 25/09/2024 1:15:09 PM: Received command: favicon.ico
 25/09/2024 1:15:10 PM: Received command: port
 25/09/2024 1:15:10 PM: Received command: favicon.ico
+25/09/2024 1:15:47 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 1:15:47 PM: Press 'Q' to quit at any time...
+25/09/2024 1:18:20 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 1:18:46 PM: HTTP server listening on http://localhost:8080/
+25/09/2024 1:18:56 PM: Received command: port
+25/09/2024 1:18:56 PM: Received command: favicon.ico
+25/09/2024 1:19:01 PM: Received command: start
+25/09/2024 1:19:01 PM: OSCQuery service started at TCP 55399, UDP 62384
+25/09/2024 1:19:01 PM: OSC Messages on UDP at: 62384
+25/09/2024 1:19:01 PM: Received command: favicon.ico
+25/09/2024 1:19:03 PM: Received command: port
+25/09/2024 1:19:03 PM: Received command: favicon.ico

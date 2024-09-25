@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using VRC.OSCQuery;
 using System.Text;
 using System.IO;
-using System.Runtime.InteropServices;
+using System.Threading;
 
 class Program
 {
@@ -14,21 +14,11 @@ class Program
     private static OSCQueryService oscQuery;
     private static int udpPort;
 
-    // Import the necessary methods for hiding the console window
-    [DllImport("kernel32.dll")]
-    static extern IntPtr GetConsoleWindow();
-
-    [DllImport("user32.dll")]
-    static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-    const int SW_HIDE = 0;
+    // Token for stopping the application from the HTTP request
+    private static CancellationTokenSource cts = new CancellationTokenSource();
 
     static async Task Main(string[] args)
     {
-        // Hide the console window
-        var handle = GetConsoleWindow();
-        ShowWindow(handle, SW_HIDE);
-
         // Set up the HTTP listener for remote control
         HttpListener listener = new HttpListener();
         listener.Prefixes.Add("http://localhost:8080/"); // Local HTTP server to handle requests
@@ -45,30 +35,16 @@ class Program
         }
 
         // Start handling remote commands asynchronously
-        Task listenerTask = HandleRemoteCommands(listener);
+        Task listenerTask = HandleRemoteCommands(listener, cts.Token);
 
-        LogMessage("Press 'Q' to quit at any time...");
-
-        // Keep the application alive until 'Q' is pressed
-        while (true)
-        {
-            var key = Console.ReadKey();
-            if (key.Key == ConsoleKey.Q)
-            {
-                StopService();
-                listener.Stop();
-                break;
-            }
-        }
-
-        // Await the listener task to make sure it's properly handled
+        // Use cancellation token to stop the program when the "/stop" command is issued
         await listenerTask;
     }
 
     // Function to handle HTTP requests for remote control
-    static async Task HandleRemoteCommands(HttpListener listener)
+    static async Task HandleRemoteCommands(HttpListener listener, CancellationToken token)
     {
-        while (listener.IsListening)
+        while (listener.IsListening && !token.IsCancellationRequested)
         {
             HttpListenerContext context;
             try
@@ -95,6 +71,9 @@ class Program
                 StopService();
                 byte[] buffer = Encoding.UTF8.GetBytes("Service stopped");
                 context.Response.OutputStream.Write(buffer, 0, buffer.Length);
+
+                // Signal the application to stop by canceling the token
+                cts.Cancel();
             }
             else if (command == "port")
             {
@@ -110,6 +89,9 @@ class Program
 
             context.Response.OutputStream.Close();
         }
+
+        // Close the listener once the loop exits
+        listener.Stop();
     }
 
     // Function to start the OSCQuery service
