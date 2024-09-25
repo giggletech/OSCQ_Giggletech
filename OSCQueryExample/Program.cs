@@ -1,111 +1,95 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Timers; // Explicitly use System.Timers.Timer to avoid ambiguity
-using VRC.OSCQuery; // Import the OSCQuery library
+using System.Net;
 using System.Threading.Tasks;
+using VRC.OSCQuery; // Import the OSCQuery library
+using System.Timers;
 
 class Program
 {
     // List to store discovered services
     private static List<OSCQueryServiceProfile> _profiles = new List<OSCQueryServiceProfile>();
+    private static OSCQueryService oscQuery;
+    private static int udpPort;
 
-    static async Task Main(string[] args) // Make Main async to await ListDiscoveredServices
+    static async Task Main(string[] args)
+    {
+        // Set up the HTTP listener for remote control
+        HttpListener listener = new HttpListener();
+        listener.Prefixes.Add("http://localhost:8080/"); // Local HTTP server to handle requests
+        listener.Start();
+        Console.WriteLine("HTTP server listening on http://localhost:8080/");
+
+        // Start handling remote commands
+        Task.Run(() => HandleRemoteCommands(listener));
+
+        Console.WriteLine("Press 'Q' to quit at any time...");
+
+        while (true)
+        {
+            var key = Console.ReadKey();
+            if (key.Key == ConsoleKey.Q)
+            {
+                StopService();
+                listener.Stop();
+                break;
+            }
+        }
+    }
+
+    // Function to handle HTTP requests for remote control
+    static async Task HandleRemoteCommands(HttpListener listener)
+    {
+        while (true)
+        {
+            HttpListenerContext context = await listener.GetContextAsync();
+            string command = context.Request.RawUrl.Trim('/').ToLower();
+
+            if (command == "start")
+            {
+                StartService();
+                byte[] buffer = System.Text.Encoding.UTF8.GetBytes($"Service started on UDP {udpPort}");
+                context.Response.OutputStream.Write(buffer, 0, buffer.Length);
+            }
+            else if (command == "stop")
+            {
+                StopService();
+                byte[] buffer = System.Text.Encoding.UTF8.GetBytes("Service stopped");
+                context.Response.OutputStream.Write(buffer, 0, buffer.Length);
+            }
+            context.Response.OutputStream.Close();
+        }
+    }
+
+    // Function to start the OSCQuery service
+    static void StartService()
     {
         // Get available TCP and UDP ports
-        var tcpPort = Extensions.GetAvailableTcpPort();
-        var udpPort = Extensions.GetAvailableUdpPort();
+        int tcpPort = Extensions.GetAvailableTcpPort();
+        udpPort = Extensions.GetAvailableUdpPort();
 
         // Set up the OSCQuery service
-        var oscQuery = new OSCQueryServiceBuilder()
+        oscQuery = new OSCQueryServiceBuilder()
             .WithTcpPort(tcpPort)
             .WithUdpPort(udpPort)
             .WithServiceName("Giggletech")
-            .WithDefaults()  // <------------------------------- This must go after, or else it will set things to default, can possibly remove later
+            .WithDefaults()
             .Build();
 
-        // Log the TCP and UDP ports
-        Console.WriteLine($"Started OSCQueryService at TCP {tcpPort}, UDP {udpPort}");
-        Console.WriteLine($"OSC Messeges on UDP at: {udpPort}");
+        Console.WriteLine($"OSCQuery service started at TCP {tcpPort}, UDP {udpPort}");
+        Console.WriteLine($"OSC Messages on UDP at: {udpPort}");
 
-        // Add an OSC endpoint that accepts string data with the path "/avatar"
+        // Add an OSC endpoint
         oscQuery.AddEndpoint("/avatar", "s", Attributes.AccessValues.WriteOnly, new object[] { "This is my avatar endpoint" });
-
-        Console.WriteLine("Endpoint '/avatar' added. Access it at:");
-        Console.WriteLine($"http://localhost:{tcpPort}/avatar or http://localhost:{tcpPort}?explorer");
-
-        // Discover and store running services
-        DiscoverServices(oscQuery);
-
-        // Set a timer to refresh service discovery every 5 seconds
-        var refreshTimer = new System.Timers.Timer(5000); // Use System.Timers.Timer explicitly
-        refreshTimer.Elapsed += (s, e) =>
-        {
-            oscQuery.RefreshServices();
-        };
-        refreshTimer.Start();
-
-        // Keep running until the user decides to stop the service
-        while (true)
-        {
-            // Wait for user input to remove the endpoint or stop the service
-            Console.WriteLine("Press 'R' to remove the endpoint, 'L' to list services, or 'Q' to stop the service.");
-            var key = Console.ReadKey();
-
-            if (key.Key == ConsoleKey.R)
-            {
-                // Remove the endpoint
-                oscQuery.RemoveEndpoint("/avatar");
-                Console.WriteLine("\nEndpoint '/avatar' removed.");
-            }
-            else if (key.Key == ConsoleKey.L)
-            {
-                // List services and check for a specific endpoint
-                Console.WriteLine("\nListing discovered services...");
-                await ListDiscoveredServices(); // Await the async method
-            }
-            else if (key.Key == ConsoleKey.Q)
-            {
-                // Stop the service and exit the loop
-                oscQuery.Dispose();  // This stops the service
-                Console.WriteLine("\nOSCQueryService stopped.");
-                break; // Exit the loop and end the program
-            }
-        }
     }
 
-    // Function to discover services and store them
-    static void DiscoverServices(OSCQueryService queryService)
+    // Function to stop the OSCQuery service
+    static void StopService()
     {
-        // Find and store all currently running services
-        foreach (var service in queryService.GetOSCQueryServices())
+        if (oscQuery != null)
         {
-            AddProfileToList(service);
-        }
-
-        // Subscribe to new services that get discovered in the future
-        queryService.OnOscQueryServiceAdded += (profile) =>
-        {
-            AddProfileToList(profile);
-        };
-    }
-
-    // Function to add a profile to the list and log it
-    static void AddProfileToList(OSCQueryServiceProfile profile)
-    {
-        _profiles.Add(profile);
-        Console.WriteLine($"Added {profile.name} to list of profiles");
-    }
-
-    // Function to list all discovered services and check for a specific endpoint
-    static async Task ListDiscoveredServices()
-    {
-        foreach (var profile in _profiles)
-        {
-            Console.WriteLine($"Service: {profile.name}, Address: {profile.address}:{profile.port}");
-
-            // Check if the service has a specific endpoint (e.g., "/avatar")
-            var tree = await Extensions.GetOSCTree(profile.address, profile.port);
-
+            oscQuery.Dispose();
+            Console.WriteLine("OSCQueryService stopped.");
         }
     }
 }
