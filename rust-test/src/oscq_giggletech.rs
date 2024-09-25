@@ -1,22 +1,21 @@
 use std::fs;
 use std::path::PathBuf;
 use std::process::{Command, Child};
-use std::thread;
 use std::time::Duration;
 use dirs::data_local_dir;
 use serde::Deserialize;
-use reqwest::blocking::{get, Client};
+use tokio::time::sleep;
 use reqwest::Error;
-use serde_yaml; // Import `serde_yaml` to parse YAML configuration
+use serde_yaml;
 
 // Struct to deserialize the YAML config
 #[derive(Debug, Deserialize)]
-pub struct Config {
-    pub httpPort: u16,
+struct Config {
+    httpPort: u16,
 }
 
 // Function to read and parse the YAML config file
-pub fn read_config() -> Config {
+fn read_config() -> Config {
     let mut config_path = data_local_dir().expect("Failed to get AppData\\Local directory");
     config_path.push("Giggletech");
     config_path.push("config_oscq.yml");
@@ -26,7 +25,7 @@ pub fn read_config() -> Config {
 }
 
 // Function to start the giggletech process
-pub fn run_giggletech() -> Child {
+fn run_giggletech() -> Child {
     let mut executable_path = data_local_dir().expect("Failed to get AppData\\Local directory");
     executable_path.push("Giggletech");
     executable_path.push("giggletech_oscq.exe");
@@ -36,38 +35,45 @@ pub fn run_giggletech() -> Child {
         .expect("Failed to start giggletech process")
 }
 
-// Function to get the UDP port from the server
-pub fn get_udp_port(port: u16) -> Result<i32, Error> {
+// Async function to get the UDP port from the server
+async fn get_udp_port(port: u16) -> Result<i32, Error> {
     let url = format!("http://localhost:{}/port_udp", port);
-    let response = get(&url)?;
-    let port_value: i32 = response.text()?.trim().parse().unwrap_or(0); // Return 0 if parsing fails
+    let response = reqwest::get(&url).await?;
+    let port_value: i32 = response.text().await?.trim().parse().unwrap_or(0); // Return 0 if parsing fails
     Ok(port_value)
 }
 
-// Function to send the start command to the server
-pub fn start_server(port: u16) -> Result<(), Error> {
-    let client = Client::new();
+// Async function to send the start command to the server
+async fn start_server(port: u16) -> Result<(), Error> {
+    let client = reqwest::Client::new();
     let url = format!("http://localhost:{}/start", port);
     client.get(&url)
-        .send()?
+        .send()
+        .await?
         .error_for_status()?;
     Ok(())
 }
 
-// Function to handle the main process flow and return the UDP port
-pub fn initialize_giggletech(config: &Config) -> i32 {
+// Combined async function to initialize, handle the giggletech process, and return the UDP port
+pub async fn initialize_and_get_udp_port() -> i32 {
+    // Step 1: Read the configuration
+    let config = read_config();
+
+    // Step 2: Start the giggletech process
     let mut process = run_giggletech();
+
+    // Step 3: Loop until we get a non-zero UDP port
     loop {
-        match get_udp_port(config.httpPort) {
+        match get_udp_port(config.httpPort).await {
             Ok(0) => {
-                // If UDP port is 0, start the server
+                // If UDP port is 0, send the start command
                 println!("UDP port is 0, sending start command...");
-                if let Err(e) = start_server(config.httpPort) {
+                if let Err(e) = start_server(config.httpPort).await {
                     eprintln!("Failed to start server: {}", e);
                 }
             }
             Ok(port_value) => {
-                // Return the UDP port if it is non-zero
+                // If we get a valid non-zero port, return it
                 println!("UDP port: {}", port_value);
                 return port_value;
             }
@@ -79,7 +85,7 @@ pub fn initialize_giggletech(config: &Config) -> i32 {
             }
         }
 
-        // Sleep before the next iteration
-        thread::sleep(Duration::from_secs(10));
+        // Sleep asynchronously before the next check
+        sleep(Duration::from_secs(1)).await;
     }
 }

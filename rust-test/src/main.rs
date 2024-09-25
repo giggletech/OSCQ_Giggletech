@@ -1,11 +1,9 @@
 mod oscq_giggletech;
 
-fn main() {
-    // Read the configuration file once
-    let config = oscq_giggletech::read_config();
-
-    // Initialize the giggletech process and get the UDP port
-    let udp_port = oscq_giggletech::initialize_giggletech(&config);
+#[tokio::main]
+async fn main() {
+    // Call the single function to initialize and get the UDP port
+    let udp_port = oscq_giggletech::initialize_and_get_udp_port().await;
 
     // Now, `udp_port` holds the value and can be used later in the program
     println!("Final UDP Port to use: {}", udp_port);
