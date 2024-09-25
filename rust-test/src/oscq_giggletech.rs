@@ -1,0 +1,85 @@
+use std::fs;
+use std::path::PathBuf;
+use std::process::{Command, Child};
+use std::thread;
+use std::time::Duration;
+use dirs::data_local_dir;
+use serde::Deserialize;
+use reqwest::blocking::{get, Client};
+use reqwest::Error;
+use serde_yaml; // Import `serde_yaml` to parse YAML configuration
+
+// Struct to deserialize the YAML config
+#[derive(Debug, Deserialize)]
+pub struct Config {
+    pub httpPort: u16,
+}
+
+// Function to read and parse the YAML config file
+pub fn read_config() -> Config {
+    let mut config_path = data_local_dir().expect("Failed to get AppData\\Local directory");
+    config_path.push("Giggletech");
+    config_path.push("config_oscq.yml");
+
+    let config_str = fs::read_to_string(config_path).expect("Failed to read config_oscq.yml");
+    serde_yaml::from_str(&config_str).expect("Failed to parse config_oscq.yml")
+}
+
+// Function to start the giggletech process
+pub fn run_giggletech() -> Child {
+    let mut executable_path = data_local_dir().expect("Failed to get AppData\\Local directory");
+    executable_path.push("Giggletech");
+    executable_path.push("giggletech_oscq.exe");
+
+    Command::new(executable_path)
+        .spawn()
+        .expect("Failed to start giggletech process")
+}
+
+// Function to get the UDP port from the server
+pub fn get_udp_port(port: u16) -> Result<i32, Error> {
+    let url = format!("http://localhost:{}/port_udp", port);
+    let response = get(&url)?;
+    let port_value: i32 = response.text()?.trim().parse().unwrap_or(0); // Return 0 if parsing fails
+    Ok(port_value)
+}
+
+// Function to send the start command to the server
+pub fn start_server(port: u16) -> Result<(), Error> {
+    let client = Client::new();
+    let url = format!("http://localhost:{}/start", port);
+    client.get(&url)
+        .send()?
+        .error_for_status()?;
+    Ok(())
+}
+
+// Function to handle the main process flow and return the UDP port
+pub fn initialize_giggletech(config: &Config) -> i32 {
+    let mut process = run_giggletech();
+    loop {
+        match get_udp_port(config.httpPort) {
+            Ok(0) => {
+                // If UDP port is 0, start the server
+                println!("UDP port is 0, sending start command...");
+                if let Err(e) = start_server(config.httpPort) {
+                    eprintln!("Failed to start server: {}", e);
+                }
+            }
+            Ok(port_value) => {
+                // Return the UDP port if it is non-zero
+                println!("UDP port: {}", port_value);
+                return port_value;
+            }
+            Err(_) => {
+                // If the request fails, restart the process
+                eprintln!("Failed to retrieve UDP port, restarting giggletech process...");
+                let _ = process.kill(); // Kill the current process
+                process = run_giggletech(); // Restart the process
+            }
+        }
+
+        // Sleep before the next iteration
+        thread::sleep(Duration::from_secs(10));
+    }
+}
