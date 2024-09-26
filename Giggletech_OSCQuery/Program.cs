@@ -1,31 +1,64 @@
-﻿// Giggletech VRChat OSCQuery
-// Usage
-//  Get Info:   http://localhost:6969/info
-//  Start       http://localhost:6969/start
-// UDP Port     http://localhost:6969/port_udp
-// TCP Port     http://localhost:6969/port_tcp
-// Shut Down    http://localhost:6969/stop
-// Change 6969 if you changed the helper Port
+﻿/*
+    Giggletech VRChat OSCQuery Helper Service
 
+    **Purpose:**
+    This application is designed to run an OSCQuery service for Giggletech products in VRChat. It provides control over the OSCQuery server 
+    via HTTP commands and allows remote access to essential information such as the TCP and UDP ports, and can start or stop the service 
+    remotely.
 
+    **Usage:**
+    - The service listens for HTTP commands on the specified port (default: 6969, unless changed in the config).
+    - Commands available via HTTP:
+        - Get Info:   http://localhost:6969/info         (Returns the TCP, UDP ports, and service name)
+        - Start:      http://localhost:6969/start        (Starts the OSCQuery service)
+        - UDP Port:   http://localhost:6969/port_udp     (Returns the current UDP port)
+        - TCP Port:   http://localhost:6969/port_tcp     (Returns the current TCP port)
+        - Shut Down:  http://localhost:6969/stop         (Stops the service and shuts down the application)
 
-// THIS NEEDS TO BE RUNNING FOR GIGGLETECH TO WORK -< TOMOTOWOWOWOWOWOWOW
+    **How It Works:**
+    1. **Configuration:**
+       - The application reads its configuration from a YAML file (`config_oscq.yml`), specifically the HTTP listener port and service name.
+       - Default values are provided in case the configuration file is missing or can't be read (HTTP port 6969, service name "Giggletech").
 
-// TOMOROW: why isnt this running anywhere? Where do i install it and how do i call it / maike sure its alway active
-// Runs in C directory -> Something to do with admin writes
-// How can i install it so it has acess to do things ? 
+    2. **Starting the HTTP Listener:**
+       - A local HTTP server listens for requests on the specified port (default: 6969).
+       - Supported commands (`/start`, `/stop`, `/info`, `/port_udp`, `/port_tcp`) allow remote control and retrieval of service information.
 
+    3. **Starting the OSCQuery Service:**
+       - When the `/start` command is received, the OSCQuery service is initialized with random available TCP and UDP ports.
+       - It also creates an endpoint `/avatar` that clients can interact with (example: sending VRChat avatar data via OSC).
 
-// Move Writable Files: Store files that need to be written or modified in a writable location like:
+    4. **Stopping the OSCQuery Service:**
+       - The `/stop` command stops the OSCQuery service and also shuts down the entire application, releasing resources.
+       
+    5. **Logging:**
+       - All events and actions (like starting or stopping the service, received commands, errors) are logged in `service_log_oscq.txt` 
+         for debugging and auditing purposes.
 
-// %APPDATA%: C:\Users\Username\AppData\Roaming\giggletech
-// %LOCALAPPDATA%: C:\Users\Username\AppData\Local\giggletech
+    6. **Shutdown Mechanism:**
+       - When the `/stop` command is issued, the application gracefully shuts down by disposing of the OSCQuery service and exiting 
+         the program with a success code (0).
 
-// If your app requires admin-level privileges, make sure it's configured to request admin rights at runtime (for actions like modifying system files or writing logs to Program Files).
+    **File Locations:**
+    - If the application needs to write or modify files (like logs or configuration), it uses locations such as:
+      - `%APPDATA%\Giggletech` for configuration files.
+      - `%LOCALAPPDATA%\Giggletech` for logs and other temporary files.
 
-// Add a Manifest File: Include a manifest with your application to always run with elevated privileges. For example, the giggletech_oscq.exe file can have a manifest that specifies it should run as an administrator:
+    **Administrative Privileges:**
+    - If admin-level access is required (e.g., to write to restricted directories), ensure that the application is run with 
+      elevated privileges. This can be achieved by adding a manifest file to the executable that specifies the need for admin rights.
 
-// ------------- IT PROBLY IS CRAHSING CUZE IT CARNT WRITE OR ADD A FILE IN PRGRAM FILES----------------------
+    **Potential Issues:**
+    - If the application fails to start properly or crashes, it might be due to permission issues when writing to restricted directories 
+      like `Program Files`. Ensure that writable files (logs, configs) are placed in locations such as `%LOCALAPPDATA%`.
+
+    **Next Steps:**
+    - Ensure that this service is always running on startup or install it as a background service to ensure Giggletech functionality.
+    - The application currently stores the configuration and logs locally. If this causes issues, adjust the file paths to ensure 
+      write access.
+
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Net;

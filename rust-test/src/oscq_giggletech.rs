@@ -1,35 +1,50 @@
 /*
-    Giggletech OSCQuery Rust Module
+    Giggletech OSCQuery Server Initialization and Management Module
+
+    This Rust module handles the initialization, management, and monitoring of the `giggletech_oscq.exe` process. The process is responsible 
+    for running the Giggletech OSCQuery server. The module reads the necessary configuration from a YAML file, starts the OSCQuery server, 
+    and retrieves the UDP port used for communication. If the process fails to start or the UDP port isn't valid, the process is restarted 
+    automatically until a valid UDP port is retrieved.
+
+    **Main Components:**
+    1. **Config Reading:**
+       - The configuration (e.g., the HTTP port) is read from a YAML file located in `AppData\Local\Giggletech\config_oscq.yml`.
     
-    About this Module:
+    2. **Process Management:**
+       - The Giggletech OSCQuery server process (`giggletech_oscq.exe`) is started by `run_giggletech()`, and its starting directory 
+         is displayed in the console.
+       - If the process fails to retrieve a valid UDP port or stops running, it is restarted automatically.
 
-    This module handles the initialization and management of the `giggletech_oscq.exe` process.
-    It reads configuration from a YAML file located in the `AppData\Local\Giggletech` directory,
-    starts the process, and continuously checks the `httpPort` for the UDP port via an HTTP request
-    to the `/port_udp` endpoint.
+    3. **UDP Port Retrieval:**
+       - The function `get_udp_port()` retrieves the UDP port from the OSCQuery server via an HTTP request. If the port is invalid (i.e., 0), 
+         a start command is sent using `start_server()` to initialize the server properly.
 
-    If the UDP port is `0`, the module sends a start command to the `/start` endpoint.
-    If a valid non-zero UDP port is received, it is returned for further use in the main program.
-    The process is automatically restarted if the UDP port cannot be retrieved, ensuring that
-    the process stays running until a valid UDP port is received.
+    4. **Main Initialization Loop:**
+       - The main function `initialize_and_get_udp_port()` continuously checks the UDP port, restarts the server process when necessary, 
+         and returns the valid port once retrieved.
 
-    Key Functions:
-    - `initialize_and_get_udp_port()` (async): 
-        - Reads the config, starts the process, and continuously checks for a valid UDP port.
-        - Returns the UDP port once it is successfully retrieved.
+    **How It Works:**
+    - First, the configuration is loaded from a YAML file.
+    - Then, the OSCQuery process is started.
+    - The module continuously tries to retrieve the UDP port from the server.
+    - If the port is not valid (e.g., 0) or if any error occurs, the process is restarted, and the loop continues.
+    - Once a valid UDP port is obtained, it is returned for use in the rest of the program.
 
-
+    This module ensures that the OSCQuery server is always running and that the correct UDP port is available for communication.
 */
+
+
+
 
 
 use std::fs;
 use std::path::PathBuf;
 use std::process::{Command, Child};
+use std::thread::sleep;
 use std::time::Duration;
 use dirs::data_local_dir;
 use serde::Deserialize;
-use tokio::time::sleep;
-use reqwest::Error;
+use reqwest::blocking::Client;
 use serde_yaml;
 
 // Struct to deserialize the YAML config
@@ -54,32 +69,36 @@ fn run_giggletech() -> Child {
     executable_path.push("Giggletech");
     executable_path.push("giggletech_oscq.exe");
 
+    // Display a message indicating the process is being started and the directory it's being started from
+    println!(
+        "Starting OSCQ Server from the directory: {}",
+        executable_path.display()
+    );
+
     Command::new(executable_path)
         .spawn()
         .expect("Failed to start giggletech process")
 }
 
-// Async function to get the UDP port from the server
-async fn get_udp_port(port: u16) -> Result<i32, Error> {
+
+// Function to get the UDP port from the server (synchronous)
+fn get_udp_port(port: u16) -> Result<i32, reqwest::Error> {
     let url = format!("http://localhost:{}/port_udp", port);
-    let response = reqwest::get(&url).await?;
-    let port_value: i32 = response.text().await?.trim().parse().unwrap_or(0); // Return 0 if parsing fails
+    let response = reqwest::blocking::get(&url)?;
+    let port_value: i32 = response.text()?.trim().parse().unwrap_or(0); // Return 0 if parsing fails
     Ok(port_value)
 }
 
-// Async function to send the start command to the server
-async fn start_server(port: u16) -> Result<(), Error> {
-    let client = reqwest::Client::new();
+// Function to send the start command to the server (synchronous)
+fn start_server(port: u16) -> Result<(), reqwest::Error> {
+    let client = Client::new();
     let url = format!("http://localhost:{}/start", port);
-    client.get(&url)
-        .send()
-        .await?
-        .error_for_status()?;
+    client.get(&url).send()?.error_for_status()?;
     Ok(())
 }
 
-// Combined async function to initialize, handle the giggletech process, and return the UDP port
-pub async fn initialize_and_get_udp_port() -> i32 {
+// Function to initialize, handle the giggletech process, and return the UDP port (synchronous)
+pub fn initialize_and_get_udp_port() -> i32 {
     // Step 1: Read the configuration
     let config = read_config();
 
@@ -88,11 +107,11 @@ pub async fn initialize_and_get_udp_port() -> i32 {
 
     // Step 3: Loop until we get a non-zero UDP port
     loop {
-        match get_udp_port(config.httpPort).await {
+        match get_udp_port(config.httpPort) {
             Ok(0) => {
                 // If UDP port is 0, send the start command
                 println!("UDP port is 0, sending start command...");
-                if let Err(e) = start_server(config.httpPort).await {
+                if let Err(e) = start_server(config.httpPort) {
                     eprintln!("Failed to start server: {}", e);
                 }
             }
@@ -109,7 +128,7 @@ pub async fn initialize_and_get_udp_port() -> i32 {
             }
         }
 
-        // Sleep asynchronously before the next check
-        sleep(Duration::from_secs(1)).await;
+        // Sleep before the next check
+        sleep(Duration::from_secs(1));
     }
 }
