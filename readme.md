@@ -1,3 +1,4 @@
+promt: "chat write me a readme about my code" - good not perfect :P
 
 # Giggletech VRChat OSCQuery Helper | Rust Intergration
 
