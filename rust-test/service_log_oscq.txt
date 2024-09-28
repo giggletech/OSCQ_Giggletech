@@ -24,3 +24,540 @@
 25/09/2024 6:06:17 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:8080/' because it conflicts with an existing registration on the machine.
 25/09/2024 6:08:06 PM: Error loading configuration: Could not find file 'G:\Repos\OSCQ_Giggletech\rust-test\config_oscq.yml'.
 25/09/2024 6:08:06 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:8080/' because it conflicts with an existing registration on the machine.
+25/09/2024 8:42:43 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+25/09/2024 8:42:43 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+25/09/2024 8:43:12 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+25/09/2024 8:43:12 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+25/09/2024 8:44:15 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+25/09/2024 8:44:15 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+25/09/2024 8:45:43 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+25/09/2024 8:45:43 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+25/09/2024 8:46:05 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+25/09/2024 8:46:05 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+25/09/2024 8:46:52 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+25/09/2024 8:46:52 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+25/09/2024 8:47:07 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+25/09/2024 8:47:07 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+25/09/2024 8:47:59 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+25/09/2024 8:47:59 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:02:55 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:02:55 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:03:05 AM: Received command: info
+26/09/2024 1:03:06 AM: Received command: favicon.ico
+26/09/2024 1:03:14 AM: Received command: start
+26/09/2024 1:03:14 AM: OSCQuery service started at TCP 56944, UDP 49259, Service Name: Giggletech
+26/09/2024 1:03:14 AM: OSC Messages on UDP at: 49259
+26/09/2024 1:03:14 AM: Received command: favicon.ico
+26/09/2024 1:03:21 AM: Received command: port_udp
+26/09/2024 1:03:22 AM: Received command: favicon.ico
+26/09/2024 1:03:23 AM: Received command: stop
+26/09/2024 1:03:23 AM: OSCQueryService stopped.
+26/09/2024 1:03:23 AM: Shutting down application...
+26/09/2024 1:06:01 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:06:01 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:06:09 AM: Received command: info
+26/09/2024 1:06:10 AM: Received command: favicon.ico
+26/09/2024 1:06:24 AM: Received command: start
+26/09/2024 1:06:24 AM: OSCQuery service started at TCP 57019, UDP 57108, Service Name: Giggletech
+26/09/2024 1:06:24 AM: OSC Messages on UDP at: 57108
+26/09/2024 1:06:24 AM: Received command: favicon.ico
+26/09/2024 1:06:26 AM: Received command: port_udp
+26/09/2024 1:06:26 AM: Received command: favicon.ico
+26/09/2024 1:07:23 AM: Received command: info
+26/09/2024 1:07:23 AM: Received command: favicon.ico
+26/09/2024 1:07:23 AM: Received command: info
+26/09/2024 1:07:24 AM: Received command: favicon.ico
+26/09/2024 1:07:26 AM: Received command: stop
+26/09/2024 1:07:26 AM: OSCQueryService stopped.
+26/09/2024 1:07:26 AM: Shutting down application...
+26/09/2024 1:09:47 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:09:47 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:09:48 AM: Received command: info
+26/09/2024 1:09:48 AM: Received command: favicon.ico
+26/09/2024 1:10:22 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:10:22 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:10:26 AM: Received command: info
+26/09/2024 1:10:26 AM: Received command: favicon.ico
+26/09/2024 1:10:27 AM: Received command: stop
+26/09/2024 1:10:27 AM: Shutting down application...
+26/09/2024 1:10:33 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:10:33 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:10:37 AM: Received command: info
+26/09/2024 1:10:37 AM: Received command: favicon.ico
+26/09/2024 1:11:55 AM: Received command: info
+26/09/2024 1:11:55 AM: Received command: favicon.ico
+26/09/2024 1:11:57 AM: Received command: stop
+26/09/2024 1:11:57 AM: Shutting down application...
+26/09/2024 1:12:02 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:12:02 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:12:06 AM: Received command: info
+26/09/2024 1:12:06 AM: Received command: favicon.ico
+26/09/2024 1:17:58 AM: Received command: info
+26/09/2024 1:17:59 AM: Received command: favicon.ico
+26/09/2024 1:18:55 AM: Received command: port_udp
+26/09/2024 1:18:55 AM: Received command: start
+26/09/2024 1:18:55 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:18:55 AM: OSCQuery service started at TCP 57151, UDP 65453, Service Name: Giggletech
+26/09/2024 1:18:55 AM: OSC Messages on UDP at: 65453
+26/09/2024 1:18:55 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:19:05 AM: Received command: port_udp
+26/09/2024 1:19:06 AM: Received command: info
+26/09/2024 1:19:06 AM: Received command: favicon.ico
+26/09/2024 1:19:15 AM: Received command: port_udp
+26/09/2024 1:19:20 AM: Received command: stop
+26/09/2024 1:19:20 AM: OSCQueryService stopped.
+26/09/2024 1:19:20 AM: Shutting down application...
+26/09/2024 1:19:27 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:19:27 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:19:30 AM: Received command: info
+26/09/2024 1:19:31 AM: Received command: favicon.ico
+26/09/2024 1:19:37 AM: Received command: port_udp
+26/09/2024 1:19:37 AM: Received command: start
+26/09/2024 1:19:37 AM: OSCQuery service started at TCP 57173, UDP 64823, Service Name: Giggletech
+26/09/2024 1:19:37 AM: OSC Messages on UDP at: 64823
+26/09/2024 1:19:47 AM: Received command: port_udp
+26/09/2024 1:19:50 AM: Received command: port_udp
+26/09/2024 1:19:51 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:19:51 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:19:53 AM: Received command: port_udp
+26/09/2024 1:19:56 AM: Received command: port_udp
+26/09/2024 1:19:59 AM: Received command: stop
+26/09/2024 1:19:59 AM: OSCQueryService stopped.
+26/09/2024 1:19:59 AM: Shutting down application...
+26/09/2024 1:20:02 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:20:02 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:20:05 AM: Received command: port_udp
+26/09/2024 1:20:05 AM: Received command: start
+26/09/2024 1:20:05 AM: OSCQuery service started at TCP 57195, UDP 59445, Service Name: Giggletech
+26/09/2024 1:20:05 AM: OSC Messages on UDP at: 59445
+26/09/2024 1:20:08 AM: Received command: port_udp
+26/09/2024 1:20:11 AM: Received command: port_udp
+26/09/2024 1:20:14 AM: Received command: port_udp
+26/09/2024 1:20:17 AM: Received command: port_udp
+26/09/2024 1:26:18 AM: Received command: port_udp
+26/09/2024 1:26:18 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:26:18 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:26:21 AM: Received command: port_udp
+26/09/2024 1:26:24 AM: Received command: port_udp
+26/09/2024 1:26:24 AM: Received command: stop
+26/09/2024 1:26:24 AM: OSCQueryService stopped.
+26/09/2024 1:26:24 AM: Shutting down application...
+26/09/2024 1:26:30 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:26:30 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:26:32 AM: Received command: port_udp
+26/09/2024 1:26:32 AM: Received command: start
+26/09/2024 1:26:33 AM: OSCQuery service started at TCP 57317, UDP 53617, Service Name: Giggletech
+26/09/2024 1:26:33 AM: OSC Messages on UDP at: 53617
+26/09/2024 1:26:36 AM: Received command: port_udp
+26/09/2024 1:26:39 AM: Received command: port_udp
+26/09/2024 1:26:42 AM: Received command: port_udp
+26/09/2024 1:26:45 AM: Received command: port_udp
+26/09/2024 1:26:48 AM: Received command: port_udp
+26/09/2024 1:26:51 AM: Received command: port_udp
+26/09/2024 1:26:54 AM: Received command: port_udp
+26/09/2024 1:26:57 AM: Received command: port_udp
+26/09/2024 1:27:00 AM: Received command: port_udp
+26/09/2024 1:27:03 AM: Received command: port_udp
+26/09/2024 1:27:06 AM: Received command: port_udp
+26/09/2024 1:27:09 AM: Received command: port_udp
+26/09/2024 1:27:12 AM: Received command: port_udp
+26/09/2024 1:27:15 AM: Received command: port_udp
+26/09/2024 1:27:18 AM: Received command: port_udp
+26/09/2024 1:27:21 AM: Received command: port_udp
+26/09/2024 1:27:24 AM: Received command: port_udp
+26/09/2024 1:27:27 AM: Received command: port_udp
+26/09/2024 1:27:30 AM: Received command: port_udp
+26/09/2024 1:27:33 AM: Received command: port_udp
+26/09/2024 1:27:36 AM: Received command: port_udp
+26/09/2024 1:27:39 AM: Received command: port_udp
+26/09/2024 1:27:42 AM: Received command: port_udp
+26/09/2024 1:27:45 AM: Received command: port_udp
+26/09/2024 1:27:48 AM: Received command: port_udp
+26/09/2024 1:27:51 AM: Received command: port_udp
+26/09/2024 1:27:54 AM: Received command: port_udp
+26/09/2024 1:27:57 AM: Received command: port_udp
+26/09/2024 1:28:00 AM: Received command: port_udp
+26/09/2024 1:28:03 AM: Received command: port_udp
+26/09/2024 1:28:06 AM: Received command: port_udp
+26/09/2024 1:28:09 AM: Received command: port_udp
+26/09/2024 1:28:12 AM: Received command: port_udp
+26/09/2024 1:28:15 AM: Received command: port_udp
+26/09/2024 1:28:18 AM: Received command: port_udp
+26/09/2024 1:28:21 AM: Received command: port_udp
+26/09/2024 1:28:24 AM: Received command: port_udp
+26/09/2024 1:28:27 AM: Received command: port_udp
+26/09/2024 1:28:30 AM: Received command: port_udp
+26/09/2024 1:28:33 AM: Received command: port_udp
+26/09/2024 1:28:36 AM: Received command: port_udp
+26/09/2024 1:28:39 AM: Received command: port_udp
+26/09/2024 1:28:42 AM: Received command: port_udp
+26/09/2024 1:28:45 AM: Received command: port_udp
+26/09/2024 1:28:48 AM: Received command: port_udp
+26/09/2024 1:28:51 AM: Received command: port_udp
+26/09/2024 1:28:54 AM: Received command: port_udp
+26/09/2024 1:28:57 AM: Received command: port_udp
+26/09/2024 1:29:00 AM: Received command: port_udp
+26/09/2024 1:29:03 AM: Received command: port_udp
+26/09/2024 1:29:06 AM: Received command: port_udp
+26/09/2024 1:29:09 AM: Received command: port_udp
+26/09/2024 1:29:12 AM: Received command: port_udp
+26/09/2024 1:29:15 AM: Received command: port_udp
+26/09/2024 1:29:18 AM: Received command: port_udp
+26/09/2024 1:29:21 AM: Received command: port_udp
+26/09/2024 1:29:24 AM: Received command: port_udp
+26/09/2024 1:29:27 AM: Received command: port_udp
+26/09/2024 1:29:30 AM: Received command: port_udp
+26/09/2024 1:29:33 AM: Received command: port_udp
+26/09/2024 1:29:36 AM: Received command: port_udp
+26/09/2024 1:29:39 AM: Received command: port_udp
+26/09/2024 1:29:42 AM: Received command: port_udp
+26/09/2024 1:29:45 AM: Received command: port_udp
+26/09/2024 1:29:48 AM: Received command: port_udp
+26/09/2024 1:29:51 AM: Received command: port_udp
+26/09/2024 1:29:54 AM: Received command: port_udp
+26/09/2024 1:29:57 AM: Received command: port_udp
+26/09/2024 1:30:00 AM: Received command: port_udp
+26/09/2024 1:30:03 AM: Received command: port_udp
+26/09/2024 1:30:06 AM: Received command: port_udp
+26/09/2024 1:30:09 AM: Received command: port_udp
+26/09/2024 1:30:12 AM: Received command: port_udp
+26/09/2024 1:30:15 AM: Received command: port_udp
+26/09/2024 1:30:18 AM: Received command: port_udp
+26/09/2024 1:37:01 AM: Received command: port_udp
+26/09/2024 1:37:01 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:37:01 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:37:11 AM: Received command: port_udp
+26/09/2024 1:37:14 AM: Received command: port_udp
+26/09/2024 1:37:14 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:37:14 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:37:16 AM: Received command: port_udp
+26/09/2024 1:37:18 AM: Received command: port_udp
+26/09/2024 1:37:20 AM: Received command: start
+26/09/2024 1:37:20 AM: OSCQueryService stopped.
+26/09/2024 1:37:20 AM: A service instance was already running. The previous service has been stopped and a new instance will be started.
+26/09/2024 1:37:20 AM: OSCQuery service started at TCP 57478, UDP 62281, Service Name: Giggletech
+26/09/2024 1:37:20 AM: OSC Messages on UDP at: 62281
+26/09/2024 1:37:20 AM: Received command: favicon.ico
+26/09/2024 1:37:20 AM: Received command: port_udp
+26/09/2024 1:37:22 AM: Received command: port_udp
+26/09/2024 1:37:24 AM: Received command: port_udp
+26/09/2024 1:37:26 AM: Received command: stop
+26/09/2024 1:37:26 AM: OSCQueryService stopped.
+26/09/2024 1:37:26 AM: Shutting down application...
+26/09/2024 1:39:45 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:39:45 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:39:45 AM: Received command: port_udp
+26/09/2024 1:39:45 AM: Received command: start
+26/09/2024 1:39:46 AM: OSCQuery service started at TCP 57506, UDP 62280, Service Name: Giggletech
+26/09/2024 1:39:46 AM: OSC Messages on UDP at: 62280
+26/09/2024 1:39:57 AM: Received command: port_udp
+26/09/2024 1:39:57 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:39:57 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:39:59 AM: Received command: port_udp
+26/09/2024 1:40:01 AM: Received command: port_udp
+26/09/2024 1:40:03 AM: Received command: port_udp
+26/09/2024 1:40:03 AM: Received command: stop
+26/09/2024 1:40:03 AM: OSCQueryService stopped.
+26/09/2024 1:40:03 AM: Shutting down application...
+26/09/2024 1:40:07 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:40:07 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:40:09 AM: Received command: port_udp
+26/09/2024 1:40:09 AM: Received command: start
+26/09/2024 1:40:09 AM: OSCQuery service started at TCP 57524, UDP 59382, Service Name: Giggletech
+26/09/2024 1:40:09 AM: OSC Messages on UDP at: 59382
+26/09/2024 1:40:11 AM: Received command: port_udp
+26/09/2024 1:40:13 AM: Received command: port_udp
+26/09/2024 1:40:15 AM: Received command: port_udp
+26/09/2024 1:40:17 AM: Received command: port_udp
+26/09/2024 1:40:19 AM: Received command: port_udp
+26/09/2024 1:40:21 AM: Received command: port_udp
+26/09/2024 1:40:23 AM: Received command: port_udp
+26/09/2024 1:40:25 AM: Received command: port_udp
+26/09/2024 1:40:27 AM: Received command: port_udp
+26/09/2024 1:40:29 AM: Received command: port_udp
+26/09/2024 1:40:31 AM: Received command: port_udp
+26/09/2024 1:40:33 AM: Received command: port_udp
+26/09/2024 1:40:35 AM: Received command: port_udp
+26/09/2024 1:40:37 AM: Received command: port_udp
+26/09/2024 1:40:39 AM: Received command: port_udp
+26/09/2024 1:40:41 AM: Received command: port_udp
+26/09/2024 1:40:43 AM: Received command: port_udp
+26/09/2024 1:40:45 AM: Received command: port_udp
+26/09/2024 1:40:47 AM: Received command: port_udp
+26/09/2024 1:40:49 AM: Received command: port_udp
+26/09/2024 1:40:51 AM: Received command: port_udp
+26/09/2024 1:40:53 AM: Received command: port_udp
+26/09/2024 1:40:55 AM: Received command: port_udp
+26/09/2024 1:40:57 AM: Received command: port_udp
+26/09/2024 1:40:59 AM: Received command: port_udp
+26/09/2024 1:41:01 AM: Received command: port_udp
+26/09/2024 1:41:03 AM: Received command: port_udp
+26/09/2024 1:41:05 AM: Received command: port_udp
+26/09/2024 1:41:07 AM: Received command: port_udp
+26/09/2024 1:41:09 AM: Received command: port_udp
+26/09/2024 1:41:11 AM: Received command: port_udp
+26/09/2024 1:41:13 AM: Received command: port_udp
+26/09/2024 1:41:15 AM: Received command: port_udp
+26/09/2024 1:41:17 AM: Received command: port_udp
+26/09/2024 1:41:19 AM: Received command: port_udp
+26/09/2024 1:41:21 AM: Received command: port_udp
+26/09/2024 1:41:23 AM: Received command: port_udp
+26/09/2024 1:41:25 AM: Received command: port_udp
+26/09/2024 1:41:27 AM: Received command: port_udp
+26/09/2024 1:41:29 AM: Received command: port_udp
+26/09/2024 1:41:31 AM: Received command: port_udp
+26/09/2024 1:41:33 AM: Received command: port_udp
+26/09/2024 1:41:35 AM: Received command: port_udp
+26/09/2024 1:41:37 AM: Received command: port_udp
+26/09/2024 1:41:39 AM: Received command: port_udp
+26/09/2024 1:41:41 AM: Received command: port_udp
+26/09/2024 1:41:43 AM: Received command: port_udp
+26/09/2024 1:41:45 AM: Received command: port_udp
+26/09/2024 1:41:47 AM: Received command: port_udp
+26/09/2024 1:41:49 AM: Received command: port_udp
+26/09/2024 1:41:51 AM: Received command: port_udp
+26/09/2024 1:41:53 AM: Received command: port_udp
+26/09/2024 1:41:55 AM: Received command: port_udp
+26/09/2024 1:41:57 AM: Received command: port_udp
+26/09/2024 1:41:59 AM: Received command: port_udp
+26/09/2024 1:42:01 AM: Received command: port_udp
+26/09/2024 1:42:03 AM: Received command: port_udp
+26/09/2024 1:42:05 AM: Received command: port_udp
+26/09/2024 1:42:07 AM: Received command: port_udp
+26/09/2024 1:42:09 AM: Received command: port_udp
+26/09/2024 1:42:11 AM: Received command: port_udp
+26/09/2024 1:42:13 AM: Received command: port_udp
+26/09/2024 1:42:15 AM: Received command: port_udp
+26/09/2024 1:42:19 AM: Received command: port_udp
+26/09/2024 1:42:19 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:42:19 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:42:23 AM: Received command: stop
+26/09/2024 1:42:23 AM: OSCQueryService stopped.
+26/09/2024 1:42:23 AM: Shutting down application...
+26/09/2024 1:42:28 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:42:28 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:42:28 AM: Received command: port_udp
+26/09/2024 1:42:28 AM: Received command: start
+26/09/2024 1:42:28 AM: OSCQuery service started at TCP 57647, UDP 50315, Service Name: Giggletech
+26/09/2024 1:42:28 AM: OSC Messages on UDP at: 50315
+26/09/2024 1:42:35 AM: Received command: stop
+26/09/2024 1:42:35 AM: OSCQueryService stopped.
+26/09/2024 1:42:35 AM: Shutting down application...
+26/09/2024 1:42:40 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:42:40 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:42:41 AM: Received command: info
+26/09/2024 1:42:41 AM: Received command: port_udp
+26/09/2024 1:42:41 AM: Received command: start
+26/09/2024 1:42:41 AM: OSCQuery service started at TCP 57665, UDP 52609, Service Name: Giggletech
+26/09/2024 1:42:41 AM: OSC Messages on UDP at: 52609
+26/09/2024 1:42:41 AM: Received command: favicon.ico
+26/09/2024 1:42:51 AM: Received command: port_udp
+26/09/2024 1:43:01 AM: Received command: port_udp
+26/09/2024 1:43:11 AM: Received command: port_udp
+26/09/2024 1:43:21 AM: Received command: port_udp
+26/09/2024 1:43:31 AM: Received command: port_udp
+26/09/2024 1:43:41 AM: Received command: port_udp
+26/09/2024 1:43:51 AM: Received command: port_udp
+26/09/2024 1:44:01 AM: Received command: port_udp
+26/09/2024 1:44:11 AM: Received command: port_udp
+26/09/2024 1:44:21 AM: Received command: port_udp
+26/09/2024 1:44:31 AM: Received command: port_udp
+26/09/2024 1:44:41 AM: Received command: port_udp
+26/09/2024 1:44:51 AM: Received command: port_udp
+26/09/2024 1:44:56 AM: Received command: port_udp
+26/09/2024 1:44:57 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:44:57 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:45:10 AM: Received command: stop
+26/09/2024 1:45:10 AM: OSCQueryService stopped.
+26/09/2024 1:45:10 AM: Shutting down application...
+26/09/2024 1:45:17 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:45:17 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:45:17 AM: Received command: port_udp
+26/09/2024 1:45:17 AM: Received command: start
+26/09/2024 1:45:17 AM: OSCQuery service started at TCP 57708, UDP 51976, Service Name: Giggletech
+26/09/2024 1:45:17 AM: OSC Messages on UDP at: 51976
+26/09/2024 1:45:27 AM: Received command: port_udp
+26/09/2024 1:45:35 AM: Received command: port_udp
+26/09/2024 1:45:35 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:45:35 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:45:38 AM: Received command: stop
+26/09/2024 1:45:38 AM: OSCQueryService stopped.
+26/09/2024 1:45:38 AM: Shutting down application...
+26/09/2024 1:45:42 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:45:42 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:45:42 AM: Received command: port_udp
+26/09/2024 1:45:42 AM: Received command: start
+26/09/2024 1:45:42 AM: OSCQuery service started at TCP 57721, UDP 62383, Service Name: Giggletech
+26/09/2024 1:45:42 AM: OSC Messages on UDP at: 62383
+26/09/2024 1:45:43 AM: Received command: port_udp
+26/09/2024 1:48:09 AM: Received command: port_udp
+26/09/2024 1:48:09 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:48:09 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:52:06 AM: Received command: port_udp
+26/09/2024 1:52:06 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:52:06 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:52:15 AM: Received command: stop
+26/09/2024 1:52:15 AM: OSCQueryService stopped.
+26/09/2024 1:52:15 AM: Shutting down application...
+26/09/2024 1:52:22 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:52:22 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:52:22 AM: Received command: port_udp
+26/09/2024 1:52:22 AM: Received command: start
+26/09/2024 1:52:23 AM: OSCQuery service started at TCP 57808, UDP 53440, Service Name: Giggletech
+26/09/2024 1:52:23 AM: OSC Messages on UDP at: 53440
+26/09/2024 1:52:25 AM: Received command: info
+26/09/2024 1:52:25 AM: Received command: favicon.ico
+26/09/2024 1:52:33 AM: Received command: port_udp
+26/09/2024 1:52:54 AM: Received command: port_udp
+26/09/2024 1:52:54 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:52:55 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:52:57 AM: Received command: port_udp
+26/09/2024 1:52:57 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:52:57 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:53:00 AM: Received command: stop
+26/09/2024 1:53:00 AM: OSCQueryService stopped.
+26/09/2024 1:53:00 AM: Shutting down application...
+26/09/2024 1:53:04 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:53:04 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:53:04 AM: Received command: port_udp
+26/09/2024 1:53:04 AM: Received command: start
+26/09/2024 1:53:04 AM: OSCQuery service started at TCP 57829, UDP 65136, Service Name: Giggletech
+26/09/2024 1:53:04 AM: OSC Messages on UDP at: 65136
+26/09/2024 1:53:04 AM: Received command: port_udp
+26/09/2024 1:53:43 AM: Received command: port_udp
+26/09/2024 1:53:43 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:53:43 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:53:48 AM: Received command: stop
+26/09/2024 1:53:48 AM: OSCQueryService stopped.
+26/09/2024 1:53:48 AM: Shutting down application...
+26/09/2024 1:53:52 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:53:52 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:53:52 AM: Received command: port_udp
+26/09/2024 1:53:52 AM: Received command: start
+26/09/2024 1:53:53 AM: OSCQuery service started at TCP 57847, UDP 53119, Service Name: Giggletech
+26/09/2024 1:53:53 AM: OSC Messages on UDP at: 53119
+26/09/2024 1:53:54 AM: Received command: port_udp
+26/09/2024 1:54:26 AM: Received command: port_udp
+26/09/2024 1:54:26 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:54:26 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:54:30 AM: Received command: stop
+26/09/2024 1:54:30 AM: OSCQueryService stopped.
+26/09/2024 1:54:30 AM: Shutting down application...
+26/09/2024 1:54:33 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:54:33 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:54:33 AM: Received command: port_udp
+26/09/2024 1:54:33 AM: Received command: start
+26/09/2024 1:54:33 AM: OSCQuery service started at TCP 57863, UDP 55472, Service Name: Giggletech
+26/09/2024 1:54:33 AM: OSC Messages on UDP at: 55472
+26/09/2024 1:54:34 AM: Received command: port_udp
+26/09/2024 1:57:20 AM: Received command: port_udp
+26/09/2024 1:57:20 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:57:20 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 1:57:23 AM: Received command: port_tcp
+26/09/2024 1:57:24 AM: Received command: favicon.ico
+26/09/2024 1:57:26 AM: Received command: stop
+26/09/2024 1:57:26 AM: OSCQueryService stopped.
+26/09/2024 1:57:26 AM: Shutting down application...
+26/09/2024 1:57:29 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 1:57:29 AM: HTTP server listening on http://localhost:6969/
+26/09/2024 1:57:30 AM: Received command: port_udp
+26/09/2024 1:57:30 AM: Received command: start
+26/09/2024 1:57:30 AM: OSCQuery service started at TCP 57909, UDP 55195, Service Name: Giggletech
+26/09/2024 1:57:30 AM: OSC Messages on UDP at: 55195
+26/09/2024 1:57:31 AM: Received command: port_udp
+26/09/2024 2:09:54 AM: Received command: info
+26/09/2024 2:09:55 AM: Received command: favicon.ico
+26/09/2024 2:10:03 AM: Received command: start
+26/09/2024 2:10:03 AM: OSCQueryService stopped.
+26/09/2024 2:10:03 AM: A service instance was already running. The previous service has been stopped and a new instance will be started.
+26/09/2024 2:10:03 AM: OSCQuery service started at TCP 58186, UDP 62911, Service Name: Giggletech
+26/09/2024 2:10:03 AM: OSC Messages on UDP at: 62911
+26/09/2024 2:10:03 AM: Received command: favicon.ico
+26/09/2024 2:10:09 AM: Received command: start
+26/09/2024 2:10:09 AM: OSCQueryService stopped.
+26/09/2024 2:10:09 AM: A service instance was already running. The previous service has been stopped and a new instance will be started.
+26/09/2024 2:10:09 AM: OSCQuery service started at TCP 58187, UDP 56296, Service Name: Giggletech
+26/09/2024 2:10:09 AM: OSC Messages on UDP at: 56296
+26/09/2024 2:10:09 AM: Received command: favicon.ico
+26/09/2024 2:26:09 AM: Received command: port_udp
+26/09/2024 2:26:09 AM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 2:26:09 AM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 6:47:05 PM: Received command: info
+26/09/2024 6:47:05 PM: Received command: favicon.ico
+26/09/2024 6:50:05 PM: Received command: port_udp
+26/09/2024 6:50:05 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 6:50:05 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 6:58:25 PM: Received command: port_udp
+26/09/2024 6:58:25 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 6:58:25 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 6:58:30 PM: Received command: stop
+26/09/2024 6:58:30 PM: OSCQueryService stopped.
+26/09/2024 6:58:30 PM: Shutting down application...
+26/09/2024 6:58:41 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 6:58:41 PM: HTTP server listening on http://localhost:6969/
+26/09/2024 6:58:42 PM: Received command: port_udp
+26/09/2024 6:58:42 PM: Received command: start
+26/09/2024 6:58:42 PM: OSCQuery service started at TCP 63872, UDP 52886, Service Name: Giggletech
+26/09/2024 6:58:42 PM: OSC Messages on UDP at: 52886
+26/09/2024 6:58:43 PM: Received command: port_udp
+26/09/2024 6:58:46 PM: Received command: info
+26/09/2024 6:58:46 PM: Received command: favicon.ico
+26/09/2024 7:05:38 PM: Received command: port_udp
+26/09/2024 7:05:38 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 7:05:38 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 7:05:42 PM: Received command: stop
+26/09/2024 7:05:42 PM: OSCQueryService stopped.
+26/09/2024 7:05:42 PM: Shutting down application...
+26/09/2024 7:05:51 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 7:05:51 PM: HTTP server listening on http://localhost:6969/
+26/09/2024 7:05:51 PM: Received command: port_udp
+26/09/2024 7:05:51 PM: Received command: start
+26/09/2024 7:05:51 PM: OSCQuery service started at TCP 63985, UDP 63709, Service Name: Giggletech
+26/09/2024 7:05:51 PM: OSC Messages on UDP at: 63709
+26/09/2024 7:05:52 PM: Received command: port_udp
+26/09/2024 7:07:27 PM: Received command: stop
+26/09/2024 7:07:27 PM: OSCQueryService stopped.
+26/09/2024 7:07:27 PM: Shutting down application...
+26/09/2024 7:07:38 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 7:07:38 PM: HTTP server listening on http://localhost:6969/
+26/09/2024 7:07:38 PM: Received command: port_udp
+26/09/2024 7:07:38 PM: Received command: start
+26/09/2024 7:07:38 PM: OSCQuery service started at TCP 64018, UDP 53159, Service Name: Giggletech
+26/09/2024 7:07:38 PM: OSC Messages on UDP at: 53159
+26/09/2024 7:07:39 PM: Received command: port_udp
+26/09/2024 7:07:41 PM: Received command: info
+26/09/2024 7:07:41 PM: Received command: favicon.ico
+26/09/2024 7:07:52 PM: Received command: stop
+26/09/2024 7:07:52 PM: OSCQueryService stopped.
+26/09/2024 7:07:52 PM: Shutting down application...
+26/09/2024 7:08:42 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 7:08:42 PM: HTTP server listening on http://localhost:6969/
+26/09/2024 7:08:43 PM: Received command: port_udp
+26/09/2024 7:08:43 PM: Received command: port_udp
+26/09/2024 7:08:43 PM: Received command: start
+26/09/2024 7:08:43 PM: OSCQuery service started at TCP 64062, UDP 59744, Service Name: Giggletech
+26/09/2024 7:08:43 PM: OSC Messages on UDP at: 59744
+26/09/2024 7:08:43 PM: Received command: favicon.ico
+26/09/2024 7:08:44 PM: Received command: port_udp
+26/09/2024 7:10:19 PM: Received command: port_udp
+26/09/2024 7:10:19 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 7:10:20 PM: Failed to start HTTP listener: Failed to listen on prefix 'http://localhost:6969/' because it conflicts with an existing registration on the machine.
+26/09/2024 7:10:35 PM: Received command: stop
+26/09/2024 7:10:35 PM: OSCQueryService stopped.
+26/09/2024 7:10:35 PM: Shutting down application...
+26/09/2024 7:10:50 PM: YAML configuration file not found. Using default values: HTTP Port 6969, Service Name Giggletech
+26/09/2024 7:10:50 PM: HTTP server listening on http://localhost:6969/
+26/09/2024 7:10:50 PM: Received command: port_udp
+26/09/2024 7:10:50 PM: Received command: start
+26/09/2024 7:10:50 PM: OSCQuery service started at TCP 64097, UDP 61699, Service Name: Giggletech
+26/09/2024 7:10:50 PM: OSC Messages on UDP at: 61699
+26/09/2024 7:10:51 PM: Received command: port_udp
+26/09/2024 7:11:18 PM: Received command: port_udp
+26/09/2024 7:11:18 PM: Received command: favicon.ico
+26/09/2024 7:25:02 PM: Received command: port_udp
+26/09/2024 7:27:51 PM: Received command: port_udp
+26/09/2024 7:28:45 PM: Received command: port_udp
+26/09/2024 7:33:00 PM: Received command: port_udp
+26/09/2024 7:34:35 PM: Received command: stop
+26/09/2024 7:34:35 PM: OSCQueryService stopped.
+26/09/2024 7:34:35 PM: Shutting down application...

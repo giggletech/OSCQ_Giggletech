@@ -4,9 +4,17 @@
     <AssemblyName>giggletech_oscq</AssemblyName>
     <RootNamespace>giggletech_oscq</RootNamespace>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework> <!-- Use .NET 8.0 as the target framework -->
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    
+    <SelfContained>true</SelfContained> <!-- Ensures the build is self-contained -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier> <!-- Specify the target platform (Windows 64-bit) -->
+
+
+    <Optimize>true</Optimize>
+   <DebugType>none</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
