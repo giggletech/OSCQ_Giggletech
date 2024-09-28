@@ -1,5 +1,5 @@
 
-# Giggletech VRChat OSCQuery Helper
+# Giggletech VRChat OSCQuery Helper | Rust Intergration
 
 This repository contains two key components for running the **Giggletech VRChat OSCQuery Helper** service. This service manages communication between the Giggletech system and VRChat through OSC (Open Sound Control) via an OSCQuery server.
 
