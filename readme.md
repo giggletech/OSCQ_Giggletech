@@ -3,6 +3,8 @@
 
 This repository contains two key components for running the **Giggletech VRChat OSCQuery Helper** service. This service manages communication between the Giggletech system and VRChat through OSC (Open Sound Control) via an OSCQuery server.
 
+I've aimed to make this service modular, so others can easily integrate it into their projects without much fuss. The architecture is designed to be flexible, allowing developers to plug in the OSCQuery service with minimal configuration and setup effort. This should simplify the process of managing OSC communication, especially for VRChat users.
+
 ### Key Components:
 - **Rust Module**: Manages the process lifecycle of the Giggletech OSCQuery server (`giggletech_oscq.exe`), ensuring it is always running and accessible.
 - **C# OSCQuery Server**: The core OSCQuery service, handling commands via HTTP and providing information about the TCP and UDP ports used for communication.
